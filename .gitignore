@@ -1,0 +1,34 @@
+# Symfony-specific
+/var/
+/bin/
+/app/config/parameters.yml
+/app/bootstrap.php.cache
+/web/bundles/
+
+# Common IDE files
+.idea/
+.vscode/
+*.iml
+
+# Build artifacts
+/target/
+/public/bundles/
+/public/build/
+/var/
+/var/cache/
+/var/logs/
+/var/sessions/
+
+# Composer
+/vendor/
+/composer.phar
+
+# Local configuration file (for environment-specific settings)
+/.env
+
+# Logs
+/log/
+
+# User-specific files
+/.phpstorm.meta.php
+.phpstorm.meta.php
