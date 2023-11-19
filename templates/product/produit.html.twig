@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body class="page-body">
+
+
+
+<!-- Start Main Content -->
+<main class="main-content">
+
+
+
+    <!-- Start Content Area -->
+    <div class="content-section text-light pt-8">
+        <div class="container">
+            <div class="row gutters-y">
+                <div class="col-12">
+                    <header>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb-product breadcrumb-nowrap breadcrumb breadcrumb-angle bg-transparent pl-0 pr-0 mb-0">
+                                <li class="breadcrumb-item"><a href="#">Magasin</a></li>
+                                <li class="breadcrumb-item"><a href="{{path('app_product') }}" style="color: purple">Categories</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" style="color: rebeccapurple">{{ p.nom }}</li>
+                            </ol>
+                        </nav>
+                        <h3 class="product_name mb-4">{{ p.nom }}</h3>
+
+                    </header>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-body">
+                                <!--Carousel Wrapper-->
+                                <div class="carousel-product">
+                                    <div class="slider text-secondary" data-slick="product-body">
+                                        {% if p.quantite ==0 %}
+                                        <div class="position-absolute t-0 r-0 px-4 py-1 bg-danger text-white text-uppercase fw-600">Non Disponilbe</div>
+                                        {% endif %}
+                                        <img src="{{asset('imageProduits/'~p.image)}}" alt="Game">
+
+                                    </div>
+
+                                </div>
+                                <!--/.Carousel Wrapper-->
+
+
+
+
+                                <div class="mb-6">
+                                    <h6 class="mb-0 fw-400 ls-1 text-uppercase">PLUS COMME ÇA AVEC SIUESPROTS </h6>
+                                    <hr class="border-secondary my-2">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-dark_A-20 p-4 mb-4">
+
+                        <p> {{ p.description }} </p>
+                        {% if checkP is defined %}
+                        {% if checkP %}
+                        ce produit est deja existe
+                        {%  endif %}
+                        {%  endif %}
+                        <div class="price-wrapper">
+                            <div class="mb-3">
+                                <div class="price">
+                                   <!-- <div class="price-prev">300$</div>-->
+                                    <div class="price-current" style="color: purple">{{ p.prix }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></div>
+                                </div>
+                                <div class="">Quantité : {{ p.quantite }}</div>
+                                {% if msg is defined %}
+                                <div class="alert alert-danger">{{ msg }}</div>
+                                {% endif %}
+                                <!--<div class="discount">
+                                    Save: $20.00 (33%)
+                                </div>-->
+                            </div>
+                            <div class="price-box mb-4">
+                                <div class="mr-4">
+
+                                </div>
+                                {% if p.quantite>0 %}
+                               {% if etat  %}
+                                    <div class="flex-1"><a href=" {{path('supprimer_du_panier', {'id': p.id }) }} " class="btn btn-block btn-danger"><i class="fas fa-cart-arrow-down"></i> Retiré du Panier</a></div>
+                               {% else %}
+                                <div class="flex-1"><a href=" {{path('ajoutpanier', {'id': p.id }) }} " class="btn btn-block btn-warning"><i class="fas fa-shopping-cart"></i> Ajouter au Panier</a></div>
+                                {% endif %}
+                                {% else %}
+                                <a  class="btn btn-lg btn-block btn-secondary mt-4" >Non Disponible</a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--<div class="bg-dark_A-20 p-4">
+                        <h6 class="mb-3">Information du jeu</h6>
+                        <hr class="border-secondary mt-2 mb-4">
+                        <ul class="list-unstyled mb-3">
+                            <li>
+                                <span class="platform">Platform:</span>
+                                <span class="platform-item btn btn-sm btn-outline-warning"><i class="fab fa-windows"></i> PC</span>
+                                <span class="platform-item btn btn-sm btn-outline-warning"><i class="fas fa-apple-alt"></i> mac</span>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled mb-3">
+                            <li class="developer-wrapper d-flex">
+                                <a href="#" class="developer">Developer:</a>
+                                <a href="#" class="developer-item text-lt btn btn-sm btn-secondary">ALIQUAM Erat Volutpat</a>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled small-2 mb-3">
+                            <li class="developer-wrapper">
+                                <a href="#" class="developer">Genres:</a>
+                                <a href="#">Indie</a>,
+                                <a href="#">Simulation</a>,
+                                <a href="#">Strategy</a>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled small-2 mb-3">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Content Area -->
+
+</main>
+
+
+
+
+
+<!-- /.offcanvas-cart -->
+
+<!-- jQuery -->
+<script src="assets/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- User JS -->
+<script src="assets/js/scripts.js"></script>
+
+<!-- Main JS -->
+<script src="assets/js/main.js" id="_mainJS" data-plugins="load"></script>
+</body>
+
+<!-- Mirrored from scanthemes.com/demo/HTML/wicodus/store-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Feb 2023 16:08:23 GMT -->
+</html>
+
+
+
+
+
+{% endblock %}

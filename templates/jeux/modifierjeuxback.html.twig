@@ -1,0 +1,16 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+
+    <div style="text-align-last: center;" class="col-md-12 grid-margin stretch-card">
+
+        <div class="card" >
+            <div class="card-body" >
+                <h4 class="card-title">Modifier un jeu</h4>
+                {{ form(form) }}
+                {% if update_form is defined %}
+                {{ form(update_form) }}
+            </div>
+            {% endif %}
+        </div> </div>
+    </div>
+{% endblock %}

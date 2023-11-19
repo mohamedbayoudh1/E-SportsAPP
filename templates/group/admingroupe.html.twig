@@ -1,0 +1,143 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %} <center>----------Liste des groupe <groupe></groupe></center> {% endblock %}
+
+{% block body %}
+
+    <div class="row grid-margin stretch-card">
+
+
+
+        <div class="col-10">
+            <center>
+                <h1 >tout les groupes en attente </h1>
+            </center>
+            <table class="table table-bordered custom-table">
+                <thead>
+                <tr>
+                    <th>image</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for g in groupe %}
+                    {% if g.etat==0 %}
+                        <tr>
+                            <td> <img class="img bl-3 text-primary" src="{{asset('groupe/'~g.image)}}" alt="Games Store"></td>
+
+                            <td>{{ g.Nomgroupe }}</td>
+
+                            <td style="white-space: pre-wrap;">{{ g.description }}</td>
+
+                            <td>
+                                <a href="{{ path('activegroupe', {'id': g.id}) }}" class="btn btn-inverse-info btn-fw">Accepter</a>
+                                <a href="{{ path('deactivegroupe', {'id': g.id}) }}" class="btn btn-inverse-danger btn-fw">refuser</a>
+                            </td>
+                            <td>     </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div class="col-10">
+            <center>
+                <h1 >groupe accepter</h1>
+            </center>
+            <table class="table table-bordered custom-table">
+                <thead>
+                <tr>
+                    <th>image</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for g in groupe %}
+                    {% if g.etat == 1 %}
+                        <tr>
+                            <td> <img class="img bl-3 text-primary" src="{{asset('groupe/'~g.image)}}" alt="Games Store"></td>
+
+                            <td>{{ g.Nomgroupe }}</td>
+
+                            <td style="white-space: pre-wrap;">{{ g.description }}</td>
+                            <td>
+
+                                <a href="{{ path('enttente', {'id': g.id}) }}" class="btn btn-inverse-warning btn-fw">metter en attente</a>
+                                <a href="{{ path('deletegroupeadmin', {'id': g.id}) }}" class="btn btn-inverse-danger btn-fw">supprimer</a>
+                                <a href="{{ path('deactivegroupe', {'id': g.id}) }}" class="btn btn-inverse-danger btn-fw">refuser</a>
+
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-10">
+            <center>
+                <h1 >declined groupe</h1>
+            </center>
+            <table class="table table-bordered custom-table">
+                <thead>
+                <tr>
+                    <th>image</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>action</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for g in groupe %}
+                    {% if g.etat == (-1) %}
+                        <tr>
+                            <td> <img class="img bl-3 text-primary" src="{{asset('groupe/'~g.image)}}" alt="Games Store"></td>
+
+                            <td>{{ g.Nomgroupe }}</td>
+                            <td style="white-space: pre-wrap;">{{ g.description }}</td>
+                            <td>
+                                <a href="{{ path('deletegroupeadmin', {'id': g.id}) }}" class="btn btn-inverse-danger btn-fw">supprimer</a>
+                                <a href="{{ path('enttente', {'id': g.id}) }}" class="btn btn-inverse-warning btn-fw">metter en attente</a>
+
+                            </td>
+               </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+{% endblock %}

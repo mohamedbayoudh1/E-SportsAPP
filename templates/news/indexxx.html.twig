@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container" style="margin-top: 5rem;">
+<div class="container" style="margin-top: 5rem;">
+    <form class="input-group border-0 input-transparent bg-transparent" action="{{ path('afficher_les_news') }}" method="get">
+        <input class="form-control border border-secondary border-right-0" id="search" name="search" type="search" placeholder="Type something.." aria-label="Search" value="{{ searchTerms|join(' ') }}"> 
+        <div class="input-group-append">
+         <input class="form-control border border-secondary" type="date" name="date">
+            <button class="btn btn-sm btn-warning text-secondary my-0 mx-0" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <main class="main-content" >
+        <!-- Start Content Area -->
+        <div class="content-section news-section carousel-spotlight ig-carousel text-light">
+            <div class="container">
+                <header class="header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb-product breadcrumb-nowrap breadcrumb breadcrumb-angle bg-transparent pl-0 pr-0 mb-0">
+                            <li class="breadcrumb-item"><a href="store.html">Actualité des jeux</a></li>
+                        </ol>
+                    </nav>
+                    <h2>All News</h2>
+                </header>
+                <div class="position-relative">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="color_sel_Carousel-content_02" class="tab-content position-relative w-100">
+                                <!-- tab item -->
+                                <div class="tab-pane fade active show" id="mp-2-01-c" role="tabpanel" aria-labelledby="mp-2-01-tab">
+                                    <div class="row news-list" style="display: contents;">
+        <article class="row news-list" style="display: contents;" id="news-list">
+            {% if news is not empty %}
+                {% for n in news %}
+                    <!-- item -->
+                    <article class="news-item col-12 mb-4">
+                        <div class="row">
+                            <div class="col-lg-4 mb-5 mb-lg-0">
+                                <div class="card">
+                                    <div>
+                                        <img src="{{ asset('./uploads/pictureJeux/'~n.image) }}" alt="News">
+                                        <div class="badges badges-left badges-top pl-2 pt-1 text-white">
+                                            <a class="badge badge-warning text-secondary fw-600" href="#">Actualité</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="text-gray">
+                                    <h5 class="text-uppercase fw-600"><a href="/news/{{ n.id }}">{{ n.titre }}</a></h5>
+                                    <div class="small-3 mb-2">
+                                        <span class="mr-2"><i class="fas fa-calendar-alt mr-1"></i>{{ n.dateN|date('Y-m-d') }}</span>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <div class="d-flex align-items-center bg-dark_A-10 px-4 py-1">
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- /.item -->
+                {% endfor %}
+                {{ knp_pagination_render(news, 'pagination.html.twig') }}
+            {% else %}
+                <p>Pas de news trouver.</p>
+            {% endif %}
+        </article>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- /.End Content Area -->
+    </main>
+</div>
+ <script>
+               let timeoutId = null;
+        document.querySelector('#search').addEventListener('input', function() {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function() {
+                searchNews(document.querySelector('#search').value);
+            }, 100);
+        });
+        function searchNews(searchTerm) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '{{ path('afficher_les_news') }}?search=' + searchTerm);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    let newsList = document.querySelector('#news-list');
+                    let response = xhr.response;
+                    if (searchTerm) {
+                        newsList.innerHTML = response;
+                    } else {
+                        let newContent = response.trim().startsWith('<article class="news-item') ? response : response.substring(response.indexOf('<article class="news-item'), response.lastIndexOf('</article>') );
+                        newsList.innerHTML = newContent;
+                    }
+                }
+            };
+            xhr.send();
+        }
+</script>
+
+
+
+{% endblock %}

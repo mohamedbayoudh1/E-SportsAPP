@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+            <link >
+            <style>
+                .product-image {
+                    width: 300px;
+                    height: 300px;
+                    object-fit: contain;
+                }
+            </style>
+            <header>
+
+                <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+                <link rel='stylesheet'  href="https://fonts.googleapis.com/css2?family=Android+101&display=swap"  />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+            </header>
+
+
+
+            <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}"
+             alt="Background shape"></div>
+            <br> <br>
+
+
+            <center>
+
+                <h1 style="color: white;font-size: 90px; font-family: 'Android 101', sans-serif;" class="edgtf-st-title animated animate__bounceInDown">{{ c.nom }}<br/></h1>
+
+            </center>
+            <br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+            <div id="color_sel_Carousel-content_02" class="tab-content position-relative w-100">
+                <!-- tab item -->
+                <div class="tab-pane fade active show" id="mp-2-01-c" role="tabpanel" aria-labelledby="mp-2-01-tab">
+                    <div class="row">
+                        <!-- item -->
+                        <div class="col-md-12 mb-4 bg-dark_A-35 p-4 mb-3">
+
+                            {% for p in produit %}
+
+
+
+
+                                <a href=" {{path('afficheproduit',{'id':p.id }) }} " class="product-item">
+
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="item_img d-none d-sm-block">
+
+                                            <img class="product-image" src="{{asset('imageProduits/'~p.image)}}" alt="Games Store">
+                                        </div>
+
+                                        <div class="item_content flex-1 flex-grow pl-0 pl-sm-6 pr-6">
+
+                                            <h6 class="item_title ls-1 small-1 fw-600 text-uppercase mb-1">{{ p.nom }}</h6>
+
+                                            <div class="position-relative">{% if p.quantite ==0 %}
+                                                    <div class="position-absolute t--9 l-0 px-4 py-1 bg-danger text-white text-uppercase fw-600">Non Disponilbe</div>
+                                                {% endif %}
+                                                {{  p.description }}
+                                <span class="item_genre small fw-600">
+
+                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="item_discount d-none d-sm-block">
+                                            <div class="row align-items-center h-100 no-gutters">
+
+                                            </div>
+                                        </div>
+                                        <div class="item_price">
+                                            <div class="row align-items-center h-100 no-gutters">
+                                                <div class="text-right">
+
+
+                                                    <span class="fw-600" style="color: purple;margin-right: 500px">{{ p.prix }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <!-- item -->
+
+                        <!-- /.item -->
+                        <!-- item -->
+
+                        <!-- /.item -->
+                    </div>
+                </div>
+            </div>
+            <div class="bg-dark_A-20 p-4 mb-4">
+                <div class="row" style="width: 50%; margin-left: 40%;">
+                    <div class="col-md-6 col-12" >
+                        <h6>Vérifiez le montant en dinars</h6>
+
+                        <form method="post" action="{{path('affichecategg',{'id':c.id }) }}">
+                            <div class="form-group">
+                                <label for="pointAmount">Montant en <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;" > :</label>
+
+                                <input type="text" class="form-control" id="pointAmount" name="pointAmount" >
+                                <div class="form-group">
+                                    <label for="dinarAmount">Montant en dinar :</label>
+                                    <input type="text" style="color: #0d0d0d" class="form-control" id="dinarAmount" name="dinarAmount" readonly value="{{ dinarAmount ?? '' }}DNT">
+                                </div>
+                                <button type="submit" class="edgtf-btn edgtf-btn-small edgtf-btn-outline" href="#" >Convertir</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        {% endblock %}
+
+
+

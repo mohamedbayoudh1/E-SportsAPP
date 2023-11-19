@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux{% endblock %}
+
+{% block body %}
+    <main class="main-content">
+
+        <!-- Start Content Area -->
+        <section class="content-section top_sellers carousel-spotlight ig-carousel pt-8 text-light">
+            <div class="container">
+                <header class="header">
+                    <h2>Tout Les Jeux</h2>
+                </header>
+                <div class="position-relative">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <!-- nav tabs -->
+
+                            <!-- tab panes -->
+                            <div id="color_sel_Carousel-content_02" class="tab-content position-relative w-100">
+                                <!-- tab item -->
+                                <div class="tab-pane fade active show" id="mp-2-01-c" role="tabpanel" aria-labelledby="mp-2-01-tab">
+                                    <div class="row">
+
+                                        <!-- BOUCLE FOR LENNA -->
+                                        {% if jeux is not empty %}
+                                        {% for f in jeux %}
+                                        <!-- item -->
+                                        <div class="col-md-5 mr-9 ml-2 mb-8">
+                                            <a href="#" data-toggle="modal" data-target="#GameDesc_{{ loop.index }}" class="product-item">
+                                                <div class="row align-items-center no-gutters">
+                                                    <div class="item_img d-none d-sm-block">
+                                                        <img class="img bl-3 text-primary" src="{{ asset('./uploads/pictureJeux/'~f.image)}}">
+                                                    </div>
+                                                    <div class="item_content flex-1 flex-grow pl-0 pl-sm-6 pr-6">
+                                                        <h6 class="item_title ls-1 small-1 fw-600 text-uppercase mb-1">{{ f.nomGame }}</h6>
+
+                                                        <div class="position-relative">
+                                                            Equipe de {{ f.maxPlayers }}
+                                                        </div>
+                                                    </div>
+                                                    <!-- Price -->
+                                                    <div class="item_price">
+                                                        <div class="row align-items-center h-100 no-gutters">
+                                                            <div class="text-right">
+
+                                                                <span class="fw-600"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                            <!-- dialog -->
+                                            <div class="modal fade" id="GameDesc_{{ loop.index }}" tabindex="-1" role="dialog"  aria-hidden="true">
+                                                <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                                                    <div class="modal-content bg-dark text-light">
+                                                        <div class="modal-header border-secondary">
+                                                            <h5 class="modal-title" id="userLoginTitle">Description du jeu </h5>
+                                                            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div>
+                                                            <div class="modal-body">
+                                                                {{ f.description}}
+                                                            </div>
+                                                        <span class="hr-text small my-6">Les Avis</span>
+                                                            <div class="text-center my-6">
+                                                                <div style="margin: 1rem;">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (ratingJeux[f.id]/5)*100 }}%">
+                                                                        {{ ratingJeux[f.id] }}/5
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <style>
+                                                                    .progress {
+                                                                        height: 1rem;
+                                                                        margin: 0.5rem 0;
+                                                                        background-color: #e9ecef;
+                                                                        border-radius: 0.25rem;
+                                                                        overflow: hidden;
+                                                                    }
+
+                                                                    .progress-bar {
+                                                                        color: #fff;
+                                                                        font-size: 0.875rem;
+                                                                        font-weight: bold;
+                                                                        color: #1c1a1b;
+                                                                        text-align: center;
+                                                                        white-space: nowrap;
+                                                                        background-color: #007bff;
+                                                                        transition: width 0.6s ease;
+                                                                    }
+
+                                                                    .progress-bar.bg-success {
+                                                                        background-color: #28a745;
+                                                                    }
+                                                                </style>
+                                                                </div>
+                                                                <span class="hr-text small my-6">évaluer le jeu</span>
+                                                            <div class="text-center my-6">
+                                                                <div class="star_rating-se text-warning mr-7" style=" place-content: center;">
+                                                                    <a href="{{ path('review', {'id': f.id}) }}" class="btn btn-outline-light">évaluer</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end dialog -->
+                                        {% endfor %}
+                                        {% else %}
+                                           <p>Il y a aucune jeu pour le moment</p>
+                                        {% endif %}
+                                        <!-- /.item -->
+                                    </div>
+                                </div>
+                                {{ knp_pagination_render(jeux, 'pagination.html.twig') }}
+                                <!-- tab item -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.End Content Area -->
+
+    </main>
+{% endblock %}

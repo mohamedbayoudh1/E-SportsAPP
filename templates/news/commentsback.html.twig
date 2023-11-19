@@ -1,0 +1,38 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}AllCourses{% endblock %}
+
+{% block body %}
+    <div class="col-md-6 col-xl-10 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-row justify-content-between">
+                    <h4 class="card-title">Commentaires:</h4>
+                </div>
+                {% if comments is not empty %}
+                {% for c in comments %}
+                <div class="preview-list">
+                    <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                            <img src="{{ asset('./profile/'~c.user.tag~'/'~c.user.PhotoProfil) }}" alt="image" class="rounded-circle">
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                            <div class="flex-grow">
+                                <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                    <h6 class="preview-subject">{{ c.user.prenom }} {{ c.user.nom }} <a href="{{ path('supprimer_commentaire', {'id': c.id}) }}" > <i class="remove mdi mdi-close-box"></i></a></h6>
+                                    <p class="text-muted text-small">{{ c.date.format('Y-m-d H:i:s') }}</p>
+                                </div>
+                                <p class="text-muted">{{ c.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>Il ya aucun commentaire</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

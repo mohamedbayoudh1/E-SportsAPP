@@ -1,0 +1,102 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %} <center>----------Liste des produits</center> {% endblock %}
+
+{% block body %}
+
+    <div class="row grid-margin stretch-card">
+
+
+
+        <div class="col-10">
+            <center>
+                <h1 >Liste des Tournois a verifier</h1>
+            </center>
+            <table class="table table-bordered custom-table">
+                <thead>
+                <tr>
+                    <th>image</th>
+                    <th>Nomtournoi</th>
+                    <th>Device</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for t in tournoi %}
+                    {% if t.etat==0 %}
+                        <tr>
+                            <td> <img class="img bl-3 text-primary" src="{{asset('uploads/logo/'~t.image)}}" alt="Games Store"></td>
+                            <td>{{ t.nomtournoi }}</td>
+                            <td style="white-space: pre-wrap;">{{ t.device}}</td>
+                            <td>
+                                <a href="{{ path('updattournoi', {'id': t.id}) }}" class="btn btn-inverse-info btn-fw">Accepter</a>
+                                <a href="{{ path('tournoiFalse', {'id': t.id}) }}" class="btn btn-inverse-danger btn-fw">refuser</a>
+                            </td>
+
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div class="col-10">
+            <center>
+                <h1 >Liste des Tournois deja accepter</h1>
+            </center>
+            <table class="table table-bordered custom-table">
+                <thead>
+                <tr>
+                    <th>image</th>
+                    <th>NomTournoi</th>
+                    <th>Device</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for t in tournoi %}
+                    {% if t.etat == 1 %}
+                        <tr>
+                            <td> <img class="img bl-3 text-primary" src="{{asset('uploads/logo/'~t.image)}}" alt="Games Store"></td>
+                            <td>{{ t.nomtournoi  }}</td>
+                            <td style="white-space: pre-wrap;">{{ t.device }}</td>
+
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-10">
+            <center>
+                <h1 >Liste des Tournoi refuser</h1>
+            </center>
+            <table class="table table-bordered custom-table">
+                <thead>
+                <tr>
+                    <th>image</th>
+                    <th>Nom</th>
+                    <th>Device</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for t in tournoi %}
+                    {% if t.etat == (-1) %}
+                        <tr>
+                            <td> <img class="img bl-3 text-primary" src="{{asset('uploads/logo/'~t.image)}}" alt="Games Store"></td>
+                            <td>{{ t.nomtournoi }}</td>
+                            <td style="white-space: pre-wrap;">{{ t.device }}</td>
+                       </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+{% endblock %}

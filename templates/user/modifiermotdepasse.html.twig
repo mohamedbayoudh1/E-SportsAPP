@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from scanthemes.com/demo/HTML/wicodus/main.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Feb 2023 16:04:31 GMT -->
+{% block stylesheets %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}SIUUUESPORTS{% endblock %}</title>
+
+    <!-- CSS -->
+    <link href="{{ asset('front_office/assets/css/fonts/etline-font.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('front_office/assets/css/fonts/fontawesome/all.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('front_office/assets/css/fonts/pe-icon-7-stroke.css ')}}" rel="stylesheet">
+    <link href="{{ asset('front_office/assets/css/fonts/themify-icons.css ')}}" rel="stylesheet">
+
+    <link href="{{ asset('front_office/assets/plugins/owl.carousel/owl.carousel.min.css ')}}" rel="stylesheet">
+    <link href="{{ asset('front_office/assets/plugins/slick/slick.css ')}}" rel="stylesheet">
+
+    <link href="{{ asset('front_office/assets/css/main.css ')}}" rel="stylesheet">
+    <link href="{{ asset('front_office/assets/css/styles.css ')}}" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{{ asset('front_office/assets/img/apple-touch-icon.png ')}}">
+    <link rel="icon" href="{{ asset('front_office/assets/img/favicon.png')}}">
+
+    <!-- Fonts -->
+    <link
+        href="{{ asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i') }}"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{{ asset('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}"></script>
+    <![endif]-->
+
+    <link href="{{ asset('https://unpkg.com/video.js/dist/video-js.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('https://use.fontawesome.com/releases/v5.14.0/css/all.css') }}" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+
+</head>
+{% endblock %}
+{% block css %} {% endblock %}
+{% block navbar %}
+
+<body class="page-body">
+
+{% endblock %}
+
+
+
+
+
+    <main class="main-content">
+
+       <br><br>
+<div id="about" class="mb-8" style="width: 50%;margin: 0 auto;">
+    <div class="row">
+      <div class="col-10 col-lg-11">
+        <h4 style="color: white;">Modifier Mot De Passe</h4>
+      </div>
+    </div>
+      <div class="input-transparent" >
+      
+        {{ form_start(mdp, {'attr': {'class': 'input-transparent'}}) }}
+      <div class="form-group">
+          {{ form_row(mdp.password, { 'attr': {'class': 'form-control border-secondary'} }) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(mdp.nouveaupassword, { 'attr': {'class': 'form-control border-secondary'} }) }}
+    </div>
+      <div class="form-group">
+          {{ form_row(mdp.confirmerpassword, { 'attr': {'class': 'form-control border-secondary'} }) }}
+      </div>
+      <div class="input-group-append ml-3">
+                            
+        {{ form_row(mdp.Enregistrer, {'attr': {'class': 'btn btn-warning','style':'height:100%'}}) }}
+      </div>
+      
+    </div>{{ form_end(mdp) }}
+      
+      </div>
+      
+  </div>
+
+    </main>
+
+   
+    <!-- /.offcanvas-cart -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('front_office/assets/js/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('front_office/assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- User JS -->
+    <script src="{{ asset('front_office/assets/js/scripts.js') }}"></script>
+
+    <script src="{{ asset('front_office/assets/plugins/parallax/parallax.js') }}"></script>
+    <!-- Main JS -->
+    <script src="{{ asset('front_office/assets/js/main.js') }}" id="_mainJS" data-plugins="load"></script>
+    <script src="{{ asset('front_office/assets/plugins/parallax/parallax.js') }}"></script>
+</body>
+
+<!-- Mirrored from scanthemes.com/demo/HTML/wicodus/main.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Feb 2023 16:06:20 GMT -->
+
+</html>

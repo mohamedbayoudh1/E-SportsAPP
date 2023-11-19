@@ -1,0 +1,17 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Supprimer le categorie "{{ categorie.nom }}"{% endblock %}
+
+{% block body %}
+    <h1>Supprimer le categorie "{{ categorie.nom }}"</h1>
+
+    <p>Êtes-vous sûr de vouloir supprimer cette categorie ?</p>
+
+    <form method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}" />
+        <button type="submit">Supprimer</button>
+    </form>
+
+    <a href="{{ path('ad_categorie') }}">Retour à la liste des produits</a>
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GroupController!{% endblock %}
+
+{% block body %}
+<head>
+    <link href="{{ asset('drag_and_drop/drag.css ')}}" rel="stylesheet">
+</head>
+      <!-- Start Content Area -->
+      <section class="content-section">
+        <div class="container">
+          <div class="row gutters-y">
+            <div class="col-lg-7 text-light">
+              <div class="mb-6">
+                <h3>Demande Coach</h3>
+                  </div>
+              {# <form data-form="contact_form" action="#" class="input-transparent" method="POST">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input class="form-control form-control-lg" type="text" name="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <input class="form-control form-control-lg" type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input name="subject" type="text" class="form-control" placeholder="Subject" required>
+                  </div>
+
+                  <div class="form-group">
+                    <textarea class="form-control form-control-lg" rows="4" placeholder="Your Message" name="message" required></textarea>
+                  </div>
+                  <button class="btn btn-lg btn-warning" type="submit">Send it over</button>
+              </form> #}
+              <div class="input-transparent">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    <div class="img-xl position-relative br-n bp-c bs-c article-image ar-1_1 mx-auto rounded-circle border border-secondary mb-6" style="background-image: url('noimage.jpg')">
+                        <span class="position-absolute b-0 r-0 text-secondary lead-3 d-block bg-warning p-2 rounded-circle lh-1">{{ form_row(form.photoprofile, { 'attr': {'class': 'custom-file-input position-absolute l-0 t-0 b-0 h-auto'} }) }}<i class="far fa-image"></i></span>
+                      </div>
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.nom, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                    {% if form_errors(form.nom) %}
+                    <div class="error-message">{{ form_errors(form.nom) }}</div>
+                {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.prenom, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.email, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.prixheure, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                </div>
+                <div>
+                    {{ form_row(form.password, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                </div>
+                <div class="form-group">
+                    &nbsp;
+                    {{ form_widget(form.date_naissance, { 'attr': {'class': 'form-control border-secondary', 'style':'color : white'} }) }}
+
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.phone, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                </div>
+                <div>
+                    {{ form_row(form.about, { 'attr': {'class': 'form-control form-control'} }) }}
+                </div>
+                <div>
+                     </div>
+
+            <!-- drag and drop -->
+            
+                <div class="file-upload" >
+                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add File or Image</button>
+                <div class="image-upload-wrap">
+                    {{ form_widget(form.cv, { 'attr': { 'class': 'custom-file-input file-upload-input', 'accept': 'image/*,application/pdf', 'onchange': 'readURL(this);' } }) }}
+                    <div class="drag-text">
+                    <h3>Drag and drop a file or select add Image</h3>
+                    </div>
+                </div>
+                <div class="file-upload-content">
+                    <img class="file-upload-image" src="#" alt="your image" />
+                    <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- drag and drop -->
+
+                <div class="form-group mt-6">
+                    {{ form_row(form.Enregistrer, { 'attr': {'class': 'btn btn-block btn-warning'} }) }}
+                </div>
+                
+                {{ form_end(form) }}
+            </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="p-4 border border-secondary" data-overlay="9">
+                <div class="p-relative">
+                  <div class="mb-7">
+                    <h5 class="lead-2 fw-500 text-warning">Company</h5>
+                    <ul class="list-unstyled">
+                      <li class="d-flex align-items-center"><i class="fas fa-map-marker-alt mr-3" style="width: 10px"></i>M100 W Laurel Ln, Etowah, NC, 28729</li>
+                      <li class="d-flex align-items-center"><i class="fas fa-phone mr-3" style="width: 10px"></i>(812) 445-3742</li>
+                      <li class="my-3">Maecenas in odio lacus. Nulla neque diam, molestie quis fringilla in, tempus eget leo.</li>
+                    </ul>
+                  </div>
+                  <div class="mb-7">
+                    <h5 class="lead-2 fw-500 text-warning">Office</h5>
+                    <ul class="list-unstyled">
+                      <li>2265 N 2453rd Rd, Marseilles, IL, 61341 (815) 795-9748</li>
+                      <li>Lee St, Orwigsburg, PA, 17961</li>
+                      <li>637 Lee St, Orwigsburg, PA, 17961</li>
+                      <li>200 Sunset Ct, Hahnville, LA, 70057</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 class="lead-2 fw-500 text-warning">Follow Us</h5>
+                    <div class="social-buttons">
+                      <a class="mr-3 unset social-twitter" href="#"><i class="fab fa-twitter"></i></a>
+                      <a class="mr-3 unset social-facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a class="mr-3 unset social-dribbble" href="#"><i class="fab fa-dribbble"></i></a>
+                      <a class="mr-3 unset social-instagram" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Content Area -->
+
+      <!-- Start Content Area -->
+      <div class="map_box">
+        <div class="py-13" data-map="true" data-map-style="custom" data-lat="35.61030245" data-lng="140.11365268" data-marker-lat="35.61030245" data-marker-lng="140.11365268" data-marker-animation="drop" data-marker-title="Office" data-zoom="12"></div>
+      </div>
+      <!-- End Content Area -->
+      
+
+      <script > 
+    function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        
+      $('.image-upload-wrap').hide();
+        $('.file-upload-image').attr('src', e.target.result);
+      if (input.files[0].type === 'application/pdf') {
+        $('.file-upload-image').attr('src', 'drag_and_drop/PDFicon.png');
+      }
+      $('.file-upload-content').show();
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+		$('.image-upload-wrap').addClass('image-dropping');
+	});
+	$('.image-upload-wrap').bind('dragleave', function () {
+		$('.image-upload-wrap').removeClass('image-dropping');
+});
+</script>
+      {% endblock %}

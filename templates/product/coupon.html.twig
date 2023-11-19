@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<form method="POST" action="{{ path('appliquer_coupon') }}">
+    <div class="form-group">
+        <label for="coupon">Coupon :</label>
+        <input type="text" name="coupon" id="coupon" class="form-control" placeholder="Entrez votre coupon ici">
+    </div>
+    <button type="submit" class="btn btn-primary">Appliquer</button>
+</form>
+{% if app.session.has('montantTotal') %}
+    <div class="alert alert-success" role="alert">
+        Coupon appliqué ! Nouveau montant total : {{ app.session.get('montantTotal') }} €
+    </div>
+{% endif %}
+{% endblock %}

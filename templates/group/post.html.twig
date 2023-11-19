@@ -1,0 +1,354 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('rbt-modules1eb7.css')}}">
+<link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+
+<header>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap">
+
+    <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+    <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+    <link rel='stylesheet'  href="https://fonts.googleapis.com/css2?family=Android+101&display=swap"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</header>
+
+
+<body>
+<div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+
+
+
+        <html lang="en">
+
+
+        <!-- Start Main Content -->
+        <main class="main-content">
+            <center>
+            <h1 style="color: white;font-size: 90px; font-family: 'Android 101', sans-serif;" class="edgtf-st-title animated animate__bounceInDown">{{ groupe.Nomgroupe }}<br/></h1>
+            </center>
+
+            <!-- Start Content Area -->
+            <div class="content-section text-light pt-8">
+                <div class="container">
+
+                    <div class="row gutters-y">
+                        <div class="col-12">
+                            <header>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb-product breadcrumb-nowrap breadcrumb breadcrumb-angle bg-transparent pl-0 pr-0 mb-0">
+                                        <li class="breadcrumb-item">
+
+                                            <center>
+
+                                                <div class="edgtf-st-button"><a itemprop="url" data-toggle="modal" data-target="#userLogin"
+
+                                                                                style="color: #ffffff;margin: 55px 0 0"
+                                                                                class="edgtf-btn edgtf-btn-small edgtf-btn-outline">
+                                                        <span class="edgtf-btn-text "  >AJOUTER POST  </span> </a></div>
+                                            </center>
+
+                                        </li>
+
+                                    </ol>
+                                </nav>
+
+                                <h3 class="product_name mb-4"> </h3>
+
+
+                            </header>
+
+                </div>
+            </div>
+            <section class="container text-light">
+
+            </section>
+
+            <!-- End Content Area -->
+
+
+
+        <!-- offcanvas-cart -->
+        <div id="offcanvas-cart" class="offcanvas-cart offcanvas text-light h-100 r-0 l-auto d-flex flex-column" data-animation="slideRight">
+            <div>
+                <button type="button" data-toggle="offcanvas-close" class="close float-right ml-4 text-light o-1 fw-100" data-dismiss="offcanvas" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <hr class="border-light o-20 mt-8 mb-4">
+            </div>
+            <div class="offcanvas-cart-body flex-1">
+                <div class="offcanvas-cart-list row align-items-center no-gutters">
+                    <div class="ocs-cart-item col-12 mb--4">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-3 item_img d-none d-sm-block">
+                                <a href="store-product.html"><img class="img bl-3 text-primary" src="assets/img/content/store/h-08.jpg" alt="Product"></a>
+                            </div>
+                            <div class="col-7 flex-1 flex-grow pl-0 pl-sm-4 pr-4">
+                                <a href="store-product.html"><span class="d-block item_title text-lt ls-1 lh-1 small-1 fw-600 text-uppercase mb-2">Journey of the Solarcity</span></a>
+                                <div class="position-relative lh-1">
+                                    <div class="number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="ti-minus"></i></button>
+                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="ti-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="row align-items-center h-100 no-gutters">
+                                    <div class="ml-auto text-center">
+                                        <a href="#"><i class="far fa-trash-alt"></i></a><br>
+                                        <span class="fw-500 text-warning">€44.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ocs-cart-item col-12">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-3 item_img d-none d-sm-block">
+                                <a href="store-product.html"><img class="img bl-3 text-primary" src="assets/img/content/store/h-09.jpg" alt="Product"></a>
+                            </div>
+                            <div class="col-7 flex-1 flex-grow pl-0 pl-sm-4 pr-4">
+                                <a href="store-product.html"><span class="d-block item_title text-lt ls-1 lh-1 small-1 fw-600 text-uppercase mb-2">Exploration Memories</span></a>
+                                <div class="position-relative lh-1">
+                                    <div class="number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="ti-minus"></i></button>
+                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="ti-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="row align-items-center h-100 no-gutters">
+                                    <div class="ml-auto text-center">
+                                        <a href="#"><i class="far fa-trash-alt"></i></a><br>
+                                        <span class="fw-500 text-warning">€27.59</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="checkout-order.html" class="btn btn-lg btn-block btn-outline-light">View cart</a>
+            </div>
+        </div>
+
+        </body>
+
+        <!-- Mirrored from scanthemes.com/demo/HTML/wicodus/store-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Feb 2023 16:08:23 GMT -->
+        </html>
+
+
+
+
+
+
+
+<!------------------------------------------------------- sign Up ---------------------------------------------------------------------------------->
+
+<div class="modal fade" id="userLogin" tabindex="-1" role="dialog" aria-labelledby="userLoginTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
+                <center>
+                <h5 class="modal-title" id="userLoginTitle">AJOUTER VOTRE POST </h5>
+                </center>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+
+
+                </div>
+                {{ form_start(form , {'attr': {'novalidate': true}}) }}
+                    <div class="edgtf-eh-item-inner">
+
+                        {{ form_widget(form.nompost, {'attr': {'class': 'edgtf-eh-item-inner', 'placeholder': 'NOM DE POST '}}) }}
+                        <div style="background-color: transparent;color: red" class="alert-danger">
+                            {{ form_errors(form.nompost) }}
+                        </div>
+
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.contenu, {'attr': {'class': 'edgtf-eh-item-inner', 'placeholder': 'CONTENUE'}}) }}
+                        <div style="background-color: transparent;color: red" class="alert-danger">
+                            {{ form_errors(form.nompost) }}
+                        </div>
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.imgp, {'attr': {'class': 'edgtf-eh-item-inner', 'placeholder': 'image'}}) }}
+                        <div style="background-color: transparent;color: red" class="alert-danger">
+                            {{ form_errors(form.imgp) }}
+                        </div>
+
+                    </div>
+                <div class="form-group mt-6">
+
+                    {{ form_widget(form.ajouter, {'attr': {'class': 'btn btn-block btn-warning'}}) }}
+
+                </div>
+                {{ form_end(form) }}
+
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" checked="" id="rememberMeCheck">
+
+                        </div>
+
+                    </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------------ /.sign Up ---------------------------------------------------------------->
+
+
+
+
+    <style>
+        body {
+            background-color: #eee;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+        }
+        .card {
+            border: none;
+        }
+        .ellipsis {
+            color: #a09c9c;
+        }
+        hr {
+            color: #a09c9c;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+        .muted-color {
+            color: #a09c9c;
+            font-size: 13px;
+        }
+        .ellipsis i {
+            margin-top: 3px;
+            cursor: pointer;
+        }
+        .icons i {
+            font-size: 25px;
+        }
+        .icons .fa-heart {
+            color: red;
+        }
+        .icons .fa-smile-o {
+            color: yellow;
+            font-size: 29px;
+        }
+        .rounded-image {
+            border-radius: 50% !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+        }
+        .name {
+            font-weight: 600;
+        }
+        .comment-text {
+            font-size: 12px;
+        }
+        .status small {
+            margin-right: 10px;
+            color: blue;
+        }
+        .form-control {
+            border-radius: 26px;
+        }
+        .comment-input {
+            position: relative;
+        }
+        .fonts {
+            position: absolute;
+            right: 13px;
+            top: 8px;
+            color: #a09c9c;
+        }
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #8bbafe;
+            outline: 0;
+            box-shadow: none;
+        }
+    </style>
+
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') }}"></script>
+
+
+    {% for post in groupe.getPosts %}
+        <!-- Start Content Area -->
+        <section class="content-section gradient-lg">
+            <div class="container">
+                <div class="row gutters-y align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0 ml-auto">
+                        <div class="ar-4_3 bs-c bp-c br-n rounded" style="background-image: url( '{{asset('post/'~post.image)}}')"></div>
+                    </div>
+                    <div class="col-lg-6 ml-lg--8 rounded bg-dark text-light shadow-lg-3 py-7 px-lg-7 py-lg-6">
+                        <h3 class="mb-4">{{ post.nompost }}</h3>
+                        <hr class="w-10 border-top-2 my-6 my-xl-7 ml-0 border-warning">
+                        <p class="lead-1"> {{ post.getContenu }}</p>
+                        <div class="text-right"><p class="text-warning mt-0">{{ post.date|date('Y-m-d H:i:s') }}</p></div>
+
+                        {% if post.getIdownerpost() == app.session.get('Gamer_id') %}
+                        <a href="{{ path('delete_post', {'id': post.id}) }}" class="btn btn-outline-light">SUPPRIMER  </a>
+                        <a href="{{ path('edit_post', {'id': post.id}) }}" class="btn btn-outline-light">MODIFIER </a>
+
+                        {% endif %}
+                        <div class="col-md-6 col-lg-3 mb-6 mb-md-0">
+                            <div  class="display-4 mb-6 text-warning">
+                                <a href="{{ path('like', {'idgroupe': post.getIdGroupe.id , 'idpost': post.id}) }}"> j'aime <i  class="fas fa-heart">{{ post.getNumberOfLikes()}}
+                                        </i></a>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+{% endfor %}
+        <!-- /.End Content Area -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

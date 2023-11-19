@@ -1,0 +1,64 @@
+{% block body %}
+    <header>
+
+        <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+        <link rel='stylesheet'  href="https://fonts.googleapis.com/css2?family=Android+101&display=swap"  />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    </header>
+
+    <h6 style="color: white;font-size: 25px; font-family: 'Android 101', sans-serif;" class="edgtf-st-title ">SIUESPORTS<br/></h6>
+
+    <center>
+        <h3 style="color: black">FACTURE D'ACHAT</h3>
+    </center>
+
+    <br> <br> <br> <br>
+
+    <div style=" padding: 10px; max-width: fit-content; margin-left: 90%;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div class="mb-0">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <a href="#" class="btn btn-sm btn-warning" onclick="window.print()"><img src="{{ asset('back_office/impression.png') }}" alt="coin" style="width: 16px; height: 16px;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 style="color: white">Réferance Facture{{ uniqueString }}</h5>
+    <h5 style="color: white"> Nom & Prenom : {{ tag }} </h5>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom Produit</th>
+            <th>Référence</th>
+            <th>Prix</th>
+            <th>Date d'achat</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for a in historiqueAchat %}
+            <tr>
+                <td>{{ a.Idproduit.nom }}</td>
+                <td>{{  a.reference }}</td>
+                <td>{{ a.Idproduit.prix }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></td>
+                <td>{{ a.datedachat|date('d/m/Y ') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <center>
+        <div style="background-color: #F44336; padding: 10px; max-width: fit-content;">
+            <div style="max-width: 600px; margin: 0 auto; ">
+                <h5 style="color: white; margin: 0;"> Prix total en SIU: {{ prixtotal }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"> </h5>
+                <h5 style="color: white; margin: 0;"> Prix total en Dinar: {{ prixtotaldnt }} DNT </h5>
+            </div>
+        </div>
+    </center>
+    <h6 style="color: white"> Garantie  : Non </h6>
+    <h6 style="color: white"> remboursement  : Non </h6>
+
+    <h6 style="color: white"> Contactez nous  <img src="{{ asset('back_office/phone.png') }}" alt="coin" style="width: 16px; height: 16px;"> : 93 341 893  / 53 522 793 </h6>
+{% endblock %}

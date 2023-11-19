@@ -1,0 +1,222 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <style>
+            body {
+                background-color: #f2f2f2;
+                font-family: Arial, sans-serif;
+            }
+
+            .cont {
+                max-width: 1000px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                border-radius: 5px;
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            h1 {
+                margin: 0;
+                font-size: 36px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: normal;
+                color: #666;
+            }
+
+            .player {
+                max-width: 150px;
+                max-height: 150px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+            }
+
+        </style>
+
+
+    <div class="cont mt-5 mb-5">
+        <div class="info">
+            <img class="player" src="https://ddragon.leagueoflegends.com/cdn/13.4.1/img/profileicon/{{ icon }}.png" alt="Player Icon">
+            <h1>NAME : {{ summoner['name'] }}</h1>
+            {% if leagues != null %}
+            <h2>WINRATE : {{ (leagues[0]['wins'] / (leagues[0]['losses']+leagues[0]['wins']))*100 }}%</h2>
+
+            <h2>LV: {{ summoner['summonerLevel'] }}</h2>
+            {% endif %}
+        </div>
+
+   <div><canvas id="myChart" style="width:200px !important; ;"></canvas></div>
+
+        <script>
+            // Data for the chart
+            const data = {
+                labels: ['Wins', 'Losses'],
+                datasets: [{
+                    label: 'Win/Loss',
+                    data: [{{leagues[0]['wins']}}, {{leagues[0]['losses']}}], // <-- Replace with your data
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            // Chart configuration
+            const config = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%',
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Win/Loss Ratio'
+                        }
+                    }
+                }
+            };
+
+            // Initialize the chart
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+
+        <div class="info mr-5">
+            <p style="color: #1b0f23">{{ leagues[0]['queueType'] }}</p>
+            <img class="player" src="https://opgg-static.akamaized.net/images/medals/{{ leagues[0]['tier']|lower }}_1.png" alt="Player Icon">
+            <button type="submit" style="width: 300px;" class="edgtf-btn edgtf-btn-solid">{{ leagues[0]['tier'] }}</button>
+        </div>
+
+    </div>
+    <main class="main-content">
+
+        <!-- Start Content Area -->
+        <section class="content-section top_sellers carousel-spotlight ig-carousel pt-8 text-light">
+
+            <div class="container">
+
+                <header class="header">
+                    <h2>All Courses</h2>
+                </header>
+                <div class="position-relative">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <!-- nav tabs -->
+
+                            <!-- tab panes -->
+                            <div id="color_sel_Carousel-content_02" class="tab-content position-relative w-100">
+                                <!-- tab item -->
+                                <div class="tab-pane fade active show" id="mp-2-01-c" role="tabpanel" aria-labelledby="mp-2-01-tab">
+                                    <div class="row">
+
+                                        <!-- BOUCLE FOR LENNA -->
+                                        {% for c in courses %}
+                                            {% if c.etat == 1 %}
+                                                <!-- item -->
+                                                <div style="" class="col-5 mr-9 ml-2 mb-8 ">
+
+                                                    <a href="{{ path('oneCourse', {'id': c.id}) }}" class="product-item">
+                                                        <div class="row align-items-center no-gutters">
+                                                            <div class="item_img d-none d-sm-block">
+                                                                <img class="img bl-3 text-primary" src="{{asset('uploads/pictureCourses/'~c.image)}}" alt="Games Store">
+                                                            </div>
+                                                            <div class="item_content flex-1 flex-grow pl-0 pl-sm-6 pr-6">
+                                                                <h6 class="item_title ls-1 small-1 fw-600 text-uppercase mb-1">{{ c.titre }}</h6>
+
+                                                                <div class="position-relative">
+                                                                    <a href="{{ path('CoachCourses', {'id': c.getIdCoach.id, 'etat': 1}) }}" >coach : {{ c.getIdCoach.getNom }}</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item_discount d-none">
+                                                                <div class="row align-items-center h-100 no-gutters">
+                                                                    <div class="text-right text-secondary px-6">
+                                                                        <span class="fw-600 btn bg-warning">-10%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Price -->
+                                                            <div class="item_price">
+                                                                <div class="row align-items-center h-100 no-gutters">
+                                                                    <div class="text-right">
+
+                                                                        {% if c.prix>0 %}
+                                                                            <span style="font-size: 22px" class="fw-400">{{ c.prix }} <img src="{{ asset('back_office/piece-de-kamel.png') }}" alt="coin" style="width: 25px; height: 25px; margin-bottom: 3px"></span>
+
+                                                                        {% else %}
+                                                                            <span class="fw-600">free</span>
+                                                                        {% endif %}
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- pagination -->
+                                <nav class="mt-4 pt-4 border-top border-secondary" aria-label="Page navigation">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span class="ti-angle-left small-7" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span class="ti-angle-right small-7" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- /.pagination -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- /.End Content Area -->
+
+    </main>
+{% endblock %}

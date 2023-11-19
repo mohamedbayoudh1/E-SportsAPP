@@ -1,0 +1,418 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AllCourses{% endblock %}
+
+
+
+{% block body %}
+
+<html lang="en">
+
+
+<!-- Start Main Content -->
+<main class="main-content">
+
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+
+    <!-- Start Content Area -->
+    <div class="content-section text-light pt-8">
+        <div class="container">
+            <div class="row gutters-y">
+                <div class="col-12">
+                    <header>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb-product breadcrumb-nowrap breadcrumb breadcrumb-angle bg-transparent pl-0 pr-0 mb-0">
+                                <li class="breadcrumb-item"><a href="#">All Games</a></li>
+                                <li class="breadcrumb-item"><a href="#">Action Games</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Explosive: Blast Definitive Edition</li>
+                            </ol>
+                        </nav>
+                        <h3 class="product_name mb-4">{{ course.titre }}</h3>
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="review d-flex">
+                                <div class="review_score">
+                                    <div class="review_score-btn">9.7</div>
+                                </div>
+                                <div class="star_rating-se text-warning mr-7">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-body">
+                                <!--Carousel Wrapper-->
+                                <div class="carousel-product">
+                                    <div class="slider text-secondary" data-slick="product-body">
+
+                                        {% if app.session.has('Gamer_id') %}
+                                            {% if isBuyed != false %}
+                                                <video id="video" width="100%" height="100%" controls muted>
+                                                    <source src="{{ asset('./uploads/videoCourses/'~course.video) }}" type="video/mp4">
+                                                </video>
+                                            {% else %}
+                                                <video id="video" width="100%" height="100%" controls muted>
+                                                    <source src="{{ asset('./uploads/videoCourses/'~course.video) }}" type="video/mp4">
+                                                </video>
+                                                <script>
+                                                    const video = document.getElementById("video");
+                                                    video.addEventListener("play", function(e) {
+                                                        video.src = "";
+                                                        alert("You must purchase this Course before you can play the video.");
+                                                    });
+                                                </script>
+                                            {% endif %}
+                                        {% endif %}
+
+
+                                        {% if app.session.has('Coach_id') %}
+                                            {% if isOwner %}
+                                                <video id="video" width="100%" height="100%" controls muted>
+                                                    <source src="{{ asset('./uploads/videoCourses/'~course.video) }}" type="video/mp4">
+                                                </video>
+                                            {% else %}
+                                                <video id="video" width="100%" height="100%" controls muted>
+                                                    <source src="{{ asset('./uploads/videoCourses/'~course.video) }}" type="video/mp4">
+                                                </video>
+                                                <script>
+                                                    const video = document.getElementById("video");
+                                                    video.addEventListener("play", function(e) {
+                                                        video.src = "";
+                                                        alert("this is not your course to see the video !");
+                                                    });
+                                                </script>
+                                            {% endif %}
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                                <!--
+
+                                -->
+
+                                <div class="alert alert-no-border alert-share mb-6" role="alert">
+                                    <span class="fw-600 text-uppercase text-warning">DESCRIPTION OF this COURSE:</span>
+                                    <h6 class="ml-3">{{ course.description }}</h6>
+                                          <br>
+                                    <span class="fw-600 text-uppercase text-warning">niveau Courses : </span>
+                                    <h6 class="ml-3">{{ course.niveau }}</h6>
+                                        <br>
+                                    <span class="fw-600 text-uppercase text-warning">game of this course:</span>
+                                    <h1 class="ml-3">{{ course.getIdJeux.nomGame }}</h1>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-dark_A-20 p-4 mb-4">
+
+                        <img style="width: 100%;height: 300px" class="img bl-3 text-primary" src="{{asset('uploads/pictureCourses/'~course.image)}}" alt="Games Store">
+
+
+                        <div class="price-wrapper">
+                            <div class="mb-3">
+                                <div class="price">
+                                   <!-- <div class="price-prev">300$</div> -->
+                                    {% if course.prix>0 %}
+                                        <br>
+                             <center>
+                                 <div class="price-current">Prix  : {{ course.prix }}  <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 25px; height: 25px; margin-bottom: 3px"></div>
+                             </center>
+                                    {% else %}
+                                    <div class="price-current">free</div>
+                                    {% endif %}
+                                </div>
+                                <!--
+                                 <div class="discount">
+                                    Save: $20.00 (33%)
+                                </div>
+                                 -->
+
+                            </div>
+                            {% if app.session.has('Gamer_id') %}
+                            <div class="mb-4">
+                                {% if isBuyed is defined and isBuyed %}
+                                    <div class="flex-1"><a class="btn btn-block btn-success"><i class="mr-1 fas fa-shopping-bag"></i>ALREADY OWNED</a></div>
+
+                                {% else %}
+
+                                <div class="flex-1"><a href="{{ path('buy_course', {'id': course.id}) }}" class="btn btn-block btn-warning"><i class="fas fa-shopping-cart"></i>purshase</a></div>
+                            {% endif %}
+
+                            </div>
+
+                        </div>
+                        <div>
+
+
+
+<center>
+
+    {% if isFavorite is defined and isFavorite  %}
+        <a  href="{{ path('removeFromFavoriCourse', {'id': course.id}) }}" type="button" class="btn btn-outline-danger">
+            <i class="fa fa-heart"></i> Remove from Wishlist
+        </a>
+    {% else %} <!-- ajouter -->
+        <a href="{{ path('favori_course', {'id': course.id}) }}" class="btn btn-outline-primary btn-sm add-to-wishlist">
+            <i class="fas fa-heart"></i> Add to Wishlist
+        </a>
+    {% endif %}
+
+</center>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container text-light">
+        <div class="border border-secondary py-5 px-2">
+            <div class="mx-3 mb-6">
+                <h6 class="mb-4 fw-400 ls-1 text-uppercase">Coach</h6>
+                <hr class="border-secondary my-2">
+                <div class="col-12 mt-7">
+                    <div class="d-flex flex-wrap flex-sm-nowrap">
+                        <a ><img src="{{ asset('front_office/assets/img/avatar/1.jpg') }}" class="d-none d-sm-block avatar rounded" alt="Avatar"></a>
+                        <div class="review-item ml-sm-4">
+                            <div class="small d-flex align-items-start">
+                                <!-- user -->
+                                <a class="name text-lt badge badge-info fw-600 small-4">{{ course.getIdCoach.getnom }}</a>
+                                <!-- /.user -->
+                                <!-- time -->
+                                <div class="time ml-2">05/08/2021 </div>
+                                <!-- /.time -->
+                                <!-- star -->
+
+                                <div class="ml-2 text-warning">
+                                    review : {{ course.getIdCoach.getReview }}
+                                    {% for i in 1..5 %}
+                                    {% if i <= course.getIdCoach.getReview %}
+                                    <i class="fas fa-star"></i>
+                                    {% else %}
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                    {% endfor %}
+                                  <!--  <i class="fas fa-star-half-alt"></i>-->
+                                </div>
+                                <!-- /.star -->
+                                <!-- info -->
+                                <div class="ml-auto">
+                                    <div class="d-flex small-1">
+                                        <div class="mr-2"><a href="#" class="text-info"><i class="fas fa-thumbs-up"></i></a></div>
+                                        <div class="mr-2"><a href="#" class="text-info"><i class="fas fa-thumbs-down"></i></a></div>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle text-info" href="#" id="dropdownShare_01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-share-alt"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-share" aria-labelledby="dropdownShare_01">
+                                                <a class="dropdown-item" href="#"><i class="fab fa-twitter"></i></a>
+                                                <a class="dropdown-item" href="#"><i class="fab fa-dribbble"></i></a>
+                                                <a class="dropdown-item" href="#"><i class="fab fa-instagram"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.info -->
+                            </div>
+                            <div>
+                                <span class="d-block lead-2 mb-2">Class aptent taciti sociosqu ad litora torquent per conubia nostra</span>
+                                <div class="collapse readmore r-fade">
+                                    <p class="mb-0 small-3">Vestibulum vitae sem eget tortor dignissim convallis. Sed a vehicula tortor. Etiam semper gravida erat eget tristique. Integer suscipit finibus diam, vestibulum lobortis eros lobortis eu.Sed blandit tincidunt nibh, nec ullamcorper lacus porttitor a. Cras vitae justo nisi. Cras in congue turpis. Cras cursus vestibulum diam, vel mollis diam tempus ac. Duis euismod diam et ante egestas, sed porttitor orci euismod. In quis ligula fermentum, elementum quam quis, pellentesque lorem. Vivamus eget ligula ante. Aliquam porttitor nisl sit amet malesuada finibus. Etiam sit amet porttitor purus. Etiam at aliquam massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus sollicitudin malesuada.</p>
+                                </div>
+                                <a class="readmore-btn collapsed collapser" data-toggle="collapse" aria-expanded="false" href="#"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel" data-carousel-items="1, 2, 3, 6">
+                <div class="item mx-3">
+                    <img src="assets/img/content/store/h-01.jpg" alt="Game" class="mb-3">
+                    <a href="#" class="text-uppercase fw-500 small-2 mb-0">Creature 2020</a>
+                    <span class="time d-block small-4">26 Sep, 2021</span>
+                    <span class="d-block small text-warning"><i class="far fa-eye"></i> 23</span>
+                </div>
+
+                <div class="item mx-3">
+                    <img src="assets/img/content/store/h-04.jpg" alt="Game" class="mb-3">
+                    <a href="#" class="text-uppercase fw-500 small-2 mb-0">Golden Mask</a>
+                    <span class="time d-block small-4">18 Oct, 2021</span>
+                    <span class="d-block small text-warning"><i class="far fa-eye"></i> 57</span>
+                </div>
+                <div class="item mx-3">
+                    <img src="assets/img/content/store/h-03.jpg" alt="Game" class="mb-3">
+                    <a href="#" class="text-uppercase fw-500 small-2 mb-0">Mechaone</a>
+                    <span class="time d-block small-4">05 Oct, 2021</span>
+                    <span class="d-block small text-warning"><i class="far fa-eye"></i> 57</span>
+                </div>
+                <div class="item mx-3">
+                    <img src="assets/img/content/store/h-05.jpg" alt="Game" class="mb-3">
+                    <a href="#" class="text-uppercase fw-500 small-2 mb-0">ONE</a>
+                    <span class="time d-block small-4">16 Oct, 2021</span>
+                    <span class="d-block small text-warning"><i class="far fa-eye"></i> 57</span>
+                </div>
+                <div class="item mx-3">
+                    <img src="assets/img/content/store/h-06.jpg" alt="Game" class="mb-3">
+                    <a href="#" class="text-uppercase fw-500 small-2 mb-0">Engineer</a>
+                    <span class="time d-block small-4">27 Oct, 2020</span>
+                    <span class="d-block small text-warning"><i class="far fa-eye"></i> 57</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="review-box content-section text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mb-8">
+                        <h6 class="mb-4 fw-400 ls-1 text-uppercase">Reviews</h6>
+                        <hr class="border-secondary mt-2 mb-6">
+                        <div class="row">
+                            <!-- FOR lena -->
+                            <!-- Item -->
+                            <div class="col-12 mb-7">
+                                <div class="d-flex flex-wrap flex-sm-nowrap">
+                                    <div><img src="{{ asset('front_office/assets/img/avatar/1.jpg') }}" class="d-none d-sm-block avatar rounded" alt="Avatar"></div>
+                                    <div class="review-item ml-sm-4">
+                                        <div class="small d-flex align-items-start">
+                                            <!-- user -->
+                                            <span class="name text-lt badge badge-info fw-600 small-4">metus</span>
+                                            <!-- /.user -->
+                                            <!-- time -->
+                                            <div class="time ml-2">05/08/2021</div>
+                                            <!-- /.time -->
+                                            <!-- star -->
+                                            <div class="ml-2 text-warning">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                            <!-- /.star -->
+                                            <!-- info -->
+                                            <div class="ml-auto">
+                                                <div class="d-flex small-1">
+                                                    <div class="mr-2"><a href="#" class="text-info"><i class="fas fa-thumbs-up"></i></a></div>
+                                                    <div class="mr-2"><a href="#" class="text-info"><i class="fas fa-thumbs-down"></i></a></div>
+                                                    <div class="dropdown">
+                                                        <a class="dropdown-toggle text-info" href="#" id="dropdownShare_01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-share-alt"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-share" aria-labelledby="dropdownShare_01">
+                                                            <a class="dropdown-item" href="#"><i class="fab fa-twitter"></i></a>
+                                                            <a class="dropdown-item" href="#"><i class="fab fa-dribbble"></i></a>
+                                                            <a class="dropdown-item" href="#"><i class="fab fa-instagram"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.info -->
+                                        </div>
+                                        <div>
+                                            <span class="d-block lead-2 mb-2">Class aptent taciti sociosqu ad litora torquent per conubia nostra</span>
+                                            <div class="collapse readmore r-fade">
+                                                <p class="mb-0 small-3">Vestibulum vitae sem eget tortor dignissim convallis. Sed a vehicula tortor. Etiam semper gravida erat eget tristique. Integer suscipit finibus diam, vestibulum lobortis eros lobortis eu.Sed blandit tincidunt nibh, nec ullamcorper lacus porttitor a. Cras vitae justo nisi. Cras in congue turpis. Cras cursus vestibulum diam, vel mollis diam tempus ac. Duis euismod diam et ante egestas, sed porttitor orci euismod. In quis ligula fermentum, elementum quam quis, pellentesque lorem. Vivamus eget ligula ante. Aliquam porttitor nisl sit amet malesuada finibus. Etiam sit amet porttitor purus. Etiam at aliquam massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus sollicitudin malesuada.</p>
+                                            </div>
+                                            <a class="readmore-btn collapsed collapser" data-toggle="collapse" aria-expanded="false" href="#"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.Item -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End Content Area -->
+
+</main>
+
+
+
+<!-- offcanvas-cart -->
+<div id="offcanvas-cart" class="offcanvas-cart offcanvas text-light h-100 r-0 l-auto d-flex flex-column" data-animation="slideRight">
+    <div>
+        <button type="button" data-toggle="offcanvas-close" class="close float-right ml-4 text-light o-1 fw-100" data-dismiss="offcanvas" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <hr class="border-light o-20 mt-8 mb-4">
+    </div>
+    <div class="offcanvas-cart-body flex-1">
+        <div class="offcanvas-cart-list row align-items-center no-gutters">
+            <div class="ocs-cart-item col-12">
+                <div class="row align-items-center no-gutters">
+                    <div class="col-3 item_img d-none d-sm-block">
+                        <a href="store-product.html"><img class="img bl-3 text-primary" src="assets/img/content/store/h-08.jpg" alt="Product"></a>
+                    </div>
+                    <div class="col-7 flex-1 flex-grow pl-0 pl-sm-4 pr-4">
+                        <a href="store-product.html"><span class="d-block item_title text-lt ls-1 lh-1 small-1 fw-600 text-uppercase mb-2">Journey of the Solarcity</span></a>
+                        <div class="position-relative lh-1">
+                            <div class="number-input">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="ti-minus"></i></button>
+                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="ti-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row align-items-center h-100 no-gutters">
+                            <div class="ml-auto text-center">
+                                <a href="#"><i class="far fa-trash-alt"></i></a><br>
+                                <span class="fw-500 text-warning">€44.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ocs-cart-item col-12">
+                <div class="row align-items-center no-gutters">
+                    <div class="col-3 item_img d-none d-sm-block">
+                        <a href="store-product.html"><img class="img bl-3 text-primary" src="assets/img/content/store/h-09.jpg" alt="Product"></a>
+                    </div>
+                    <div class="col-7 flex-1 flex-grow pl-0 pl-sm-4 pr-4">
+                        <a href="store-product.html"><span class="d-block item_title text-lt ls-1 lh-1 small-1 fw-600 text-uppercase mb-2">Exploration Memories</span></a>
+                        <div class="position-relative lh-1">
+                            <div class="number-input">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="ti-minus"></i></button>
+                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="ti-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row align-items-center h-100 no-gutters">
+                            <div class="ml-auto text-center">
+                                <a href="#"><i class="far fa-trash-alt"></i></a><br>
+                                <span class="fw-500 text-warning">€27.59</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="checkout-order.html" class="btn btn-lg btn-block btn-outline-light">View cart</a>
+    </div>
+</div>
+
+</body>
+
+<!-- Mirrored from scanthemes.com/demo/HTML/wicodus/store-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Feb 2023 16:08:23 GMT -->
+</html>
+{% endblock %}

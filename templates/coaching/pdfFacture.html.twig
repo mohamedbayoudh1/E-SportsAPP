@@ -1,0 +1,80 @@
+<head>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0px 20px;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #1b0f23;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            background-color: #1b0f23;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+            color: white;
+        }
+        th {
+            font-weight: bold;
+        }
+        .logo {
+            width: 60px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .invoice {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            color: #1b0f23;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Facture PDF</h1>
+    <table>
+        <tr>
+            <th>Course name</th>
+            <td > <a style="text-decoration: none;color: white" target="_blank" href="http://127.0.0.1:8000{{ path('oneCourse', {'id': course.id}) }}" class="product-item"> {{ course.titre }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ course.prix }} <img width="20px" src="https://scontent.ftun10-1.fna.fbcdn.net/v/t1.15752-9/334872631_757189845663698_3410744926867954078_n.png?_nc_cat=101&ccb=1-7&_nc_sid=ae9488&_nc_ohc=tIkeafi5HnMAX-AHkQe&_nc_ht=scontent.ftun10-1.fna&oh=03_AdQYFE3FkoQxAE8nG7udEci_I1gl1kseXJ8R9g4tszkFnQ&oe=64292D3B" alt="Logo">
+            </td>
+        </tr>
+        <tr>
+            <th>Course picture</th>
+            <td><img width="200px" class="img bl-3 text-primary" src="{{asset('https://127.0.0.1:8000/uploads/pictureCourses/' ~ course.image )}}" alt="Games Store">
+
+            </td>
+        </tr>
+        <tr>
+            <th>Coach name</th>
+            <td>{{ course.getIdCoach.nom }}</td>
+        </tr>
+        <tr>
+            <th>Gamer name</th>
+            <td>{{ gamer.nom }}</td>
+        </tr>
+    </table>
+    <div class="invoice">
+        <p>Thank you for your purchase!</p>
+        <img class="logo" src="https://scontent.ftun10-1.fna.fbcdn.net/v/t1.15752-9/334880930_1535330956988909_4636024716374936235_n.png?stp=dst-png_p1080x2048&_nc_cat=101&ccb=1-7&_nc_sid=ae9488&_nc_ohc=kGQidllbrTgAX9Mdruo&_nc_ht=scontent.ftun10-1.fna&oh=03_AdShDVIoaQRknOAfvqgDRHfHugfi9lI9bW6XttO9gFuvew&oe=642955D6" alt="Logo">
+    </div>
+</div>
+</body>

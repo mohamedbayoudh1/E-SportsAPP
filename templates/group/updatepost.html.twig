@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+
+        <link rel="stylesheet" href="{{ asset('rbt-modules1eb7.css')}}">
+        <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+        <br>
+        <br>
+        <br>
+        <div class="edgtf-content">
+            <div class="edgtf-content-inner">
+
+
+                    <div class="edgtf-title-wrapper" >
+                        <div class="edgtf-title-inner">
+
+                            <div class="edgtf-grid">
+                                <h1 style="color: white"  class="edgtf-page-title entry-title">
+                                    <center >
+                                        <h2>FEEL<span style="color: #7228e2;"> FREE</span> TO EDIT <span style="color: #7228e2;"></span><br />
+                                            YOUR <span style="color: #7228e2;">POST</span></h2>
+                                    </center>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+
+
+
+
+
+
+    <div class="edgtf-row-grid-section-wrapper ">
+        <div class="edgtf-row-grid-section">
+            <div class="vc_row wpb_row vc_row-fluid">
+                <div class="wpb_column vc_column_container vc_col-sm-12">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                            <div class="edgtf-elements-holder   edgtf-two-columns  edgtf-responsive-mode-1024 edgtf-one-column-alignment-left">
+                                <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-1824"
+                                     data-1025-1399="0px 51px 0 0" data-769-1024="103px 123px 0 0"
+                                     data-681-768="103px 55px 0 0" data-680="103px 0px 0 0">
+                                    <div class="edgtf-eh-item-inner">
+                                        <div class="edgtf-eh-item-content edgtf-eh-custom-1824"
+                                             style="padding: 0px 57px 0 0">
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <h3>POST<span
+                                                                style="color: #7228e2;"> </span>
+                                                        <span style="color: #7228e2;">     </h3>
+                                                </div>
+                                            </div>
+                                            <div class="vc_empty_space" style="height: 20px"><span
+                                                        class="vc_empty_space_inner"></span></div>
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+
+                                                </div>
+                                            </div>
+                                            <div class="vc_empty_space" style="height: 45px"><span
+                                                        class="vc_empty_space_inner"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-7917"
+                                     data-769-1024="10px 0 130px 0" data-681-768="10px 0 130px 0"
+                                     data-680="10px 0 130px 0">
+                                    <div class="edgtf-eh-item-inner">
+                                        <div class="edgtf-eh-item-content edgtf-eh-custom-7917"
+                                             style="padding: 133px 0 145px 0">
+                                            <div role="form" class="wpcf7" id="wpcf7-f505-p1492-o1" lang="en-US"
+                                                 dir="ltr">
+                                                <div class="screen-reader-response"><p role="status" aria-live="polite"
+                                                                                       aria-atomic="true"></p>
+                                                    <ul></ul>
+                                                </div>
+                                                    <div style="display: none;">
+                                                        <input type="hidden" name="_wpcf7" value="505">
+                                                        <input type="hidden" name="_wpcf7_version" value="5.6.4">
+                                                        <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                        <input type="hidden" name="_wpcf7_unit_tag"
+                                                               value="wpcf7-f505-p1492-o1">
+                                                        <input type="hidden" name="_wpcf7_container_post" value="1492">
+                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                    </div>
+                                                    {{ form_start(form, {'attr': {'novalidate': true}}) }}
+                                                    <div class="edgtf-cf7-custom-form">
+                                                        <div class="edgtf-custom-text-area">
+                                                            {{ form_widget(form.nompost, {'attr': {'class': 'edgtf-eh-item-inner', 'placeholder': 'NOM DE GROUPE'}}) }}
+                                                            <div style="background-color: transparent;color: red" class="alert-danger">
+                                                                {{ form_errors(form.nompost) }}
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="edgtf-grid-row edgtf-grid-tiny-gutter">
+                                                            <div class="wpcf7-form-control-wrap">
+                                                                {{ form_widget(form.contenu, {'attr': {'class': 'edgtf-eh-item-inner', 'placeholder': 'DISCRIPTION DE GROUPE'}}) }}
+                                                            </div>
+                                                            <div style="background-color: transparent;color: red" class="alert-danger">
+                                                                {{ form_errors(form.contenu) }}
+                                                            </div>
+
+                                                            <div class="wpcf7-form-control-wrap">
+                                                                {{ form_row(form.imgp, {'label': 'Image', 'attr': {'accept': 'image/*'}}) }}
+                                                            </div>
+                                                            <div style="background-color: transparent;color: red" class="alert-danger">
+                                                                {{ form_errors(form.imgp) }}
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button type="submit" class="edgtf-btn edgtf-btn-outline edgtf-btn-huge wpcf7-form-control wpcf7-submit edgtf-btn-stripe">
+                                                            SUBMIT MESSAGE
+                                                            <div class="edgtf-btn-bg-holder"></div>
+                                                        </button>
+                                                    </div>
+                                                {{ form_end(form) }}
+
+                                            <div class="wpcf7-response-output" aria-hidden="true"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+

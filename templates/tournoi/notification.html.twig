@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block notification %}
+    <a href="#" onclick="toggleNotifications()">
+        <span class="material-icons">notifications</span>
+        <span class="icon-button__badge">{{ notification.getUnseenCount() }}</span>
+    </a>
+    <div id="notification-list" style="display: none;">
+        <ul>
+            {% for n in notification.getUnseen() %}
+                <li>{{ n.getSubject() }} - {{ n.getContent() }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

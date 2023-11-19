@@ -1,0 +1,201 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<head>
+  <link href="{{ asset('drag_and_drop/drag.css ')}}" rel="stylesheet">
+</head>
+    <!-- header -->
+    {{ form_start(formmodifier) }}
+    <header class="pt-10 p-relative">
+      
+      {% if user.tag is defined %}
+      <div class="overlay br-n bs-c bp-r pe-n" data-parallax="scroll" data-z-index="1" data-image-src="{{ asset('./profile/' ~ user.tag ~ '/' ~ user.getPhotoCouverture()) }}"></div>
+      {% else %}
+      <div class="overlay br-n bs-c bp-r pe-n" data-parallax="scroll" data-z-index="1" data-image-src="{{ asset('./profile/' ~ user.nom ~ user.prenom ~ '/' ~ user.getPhotoCouverture()) }}"></div>
+      {% endif %}
+       <div class="position-relative zi-1 d-flex align-items-end flex-wrap h-100">
+        <div class="release-subheader">
+          <div class="release-container">
+            <div class="pb-9 w-100 text-light text-center">
+              {% if user.tag is defined %}
+              <div class="img-xl position-relative br-n bp-c bs-c article-image ar-1_1 mx-auto rounded-circle border border-secondary mb-6" style="background-image: url('{{ asset('./profile/' ~ user.tag ~ '/' ~ user.getPhotoProfil()) }}')">
+                {% else %}
+                <div class="img-xl position-relative br-n bp-c bs-c article-image ar-1_1 mx-auto rounded-circle border border-secondary mb-6" style="background-image: url('{{ asset('./profile/' ~ user.nom ~ user.prenom ~ '/' ~ user.getPhotoProfil()) }}')">
+                  {% endif %}
+                  <span class="position-absolute b-0 r-0 text-secondary lead-3 d-block bg-warning p-2 rounded-circle lh-1">{{ form_row(formmodifier.photoprofile, { 'attr': {'class': 'custom-file-input position-absolute l-0 t-0 b-0 h-auto'} }) }}<i class="far fa-image"></i></span>  
+               
+              </div>
+              {% if user.tag is defined %}
+              <h3>{{ user.tag }}</h3>
+              {% else %}
+              <h3>{{ user.nom }} {{ user.prenom }}</h3>
+              {% endif %}
+              <span class="d-flex align-items-center justify-content-center fw-500 text-shadow"><br></span>
+               </div>
+          </div>
+        </div>
+        <div class="profile-nav w-100 border-top border-bottom border-secondary">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg mnh-auto px-0 lh-1">
+              <button class="navbar-toggler ml-auto py-5 pl-5 pr-0 pr-sm-5" type="button" data-toggle="collapse" data-target="#navbarProfile" aria-controls="navbarProfile" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fas fa-bars lead-3 text-warning"></span>
+              </button>
+              <span class="position-absolute b-0 r-0 text-secondary lead-3 d-block bg-warning p-2 rounded-circle lh-1">{{ form_row(formmodifier.photocouverture, { 'attr': {'class': 'custom-file-input position-absolute l-0 t-0 b-0 h-auto'} }) }}<i class="far fa-image"></i></span>
+         
+              
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- /.header -->
+
+    <!-- main content -->
+    <main class="main-content position-relative">
+
+      <!-- overlay -->
+      <div class="bg-theme overlay pe-n zi-1">
+        <div class="overlay pe-n br-n bp-c bs-c o-30" style="background-image: url('front_office/assets/img/bg/bg_shape.png');"></div>
+      </div>
+      <!-- /.overlay -->
+      <!-- content area -->
+      <div class="content-section position-relative text-light zi-2">
+        <div class="container">
+          <!-- tab panes -->
+          <div id="profile-tabs-content" class="tab-content position-relative w-100">
+            <!-- tab item -->
+            <div class="tab-pane fade active show" id="mp-2-01-c" role="tabpanel" aria-labelledby="mp-2-01-tab">
+              <div class="position-relative">
+                <div class="row">
+                  <div class="col-lg-7 mb-9 mb-lg-0">
+    
+                    <div id="about" class="mb-8">
+                      <div class="row">
+                        <div class="col-10 col-lg-11">
+                          <h4>Modifier Profile</h4>
+                        </div>
+                          </div>
+                      
+                      <hr class="w-10 border-top-2 mt-5 mb-5 ml-0 mr-auto border-warning">
+                     
+                      
+                        <div class="input-transparent">
+                        
+                        <div class="form-group">
+                            {{ form_row(formmodifier.nom, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                            {% if form_errors(formmodifier.nom) %}
+                            <div class="error-message">{{ form_errors(formmodifier.nom) }}</div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(formmodifier.prenom, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                        </div>
+                        {% if user.tag is defined %}
+                        <div class="form-group">
+                            {{ form_row(formmodifier.tag, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                        </div>
+                       {% endif %}
+                        <div class="form-group">
+                            {{ form_row(formmodifier.email, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                        </div>
+                        
+                        <div class="form-group">
+                            &nbsp;
+                            {{ form_widget(formmodifier.date_naissance, { 'attr': {'class': 'form-control border-secondary', 'style':'color : white'} }) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(formmodifier.phone, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                        </div>
+                        {% if user.prixheure is defined %}
+                        <div class="form-group">
+                          {{ form_row(formmodifier.prixheure, { 'attr': {'class': 'form-control border-secondary'} }) }}
+                        </div>
+                        {% endif %}
+                        <div>
+                            {{ form_row(formmodifier.about, { 'attr': {'class': 'form-control form-control'} }) }}
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          {{ form_row(formmodifier.password, { 'attr': {'class': 'form-control border-secondary','placeholder':'Saisir votre mot de passe'} }) }}
+                      </div>
+                      {% if user.cv is defined %}
+                      <div class="file-upload" hidden>
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add File or Image</button>
+                        <div class="image-upload-wrap">
+                            {{ form_widget(formmodifier.cv, { 'attr': { 'class': 'custom-file-input file-upload-input', 'accept': 'image/*,application/pdf', 'onchange': 'readURL(this);' } }) }}
+                            <div class="drag-text">
+                            <h3>Drag and drop a file or select add Image</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                            </div>
+                        </div>
+                        </div>
+                        {% endif %}
+
+
+
+                        <div class="form-group mt-6">
+                            {{ form_row(formmodifier.Enregistrer, { 'attr': {'class': 'btn btn-block btn-warning'} }) }}
+
+                        </div>
+                        
+                    </div>
+                   
+
+                    
+            <!-- /.tab item -->
+
+          </div>
+        </div>  
+      </div>
+      <!-- /.content area -->
+
+    </main>
+    <!-- /.main content -->
+    {{ form_end(formmodifier) }}
+   
+      <script > 
+    function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        
+      $('.image-upload-wrap').hide();
+        $('.file-upload-image').attr('src', e.target.result);
+      if (input.files[0].type === 'application/pdf') {
+        $('.file-upload-image').attr('src', 'drag_and_drop/PDFicon.png');
+      }
+      $('.file-upload-content').show();
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+		$('.image-upload-wrap').addClass('image-dropping');
+	});
+	$('.image-upload-wrap').bind('dragleave', function () {
+		$('.image-upload-wrap').removeClass('image-dropping');
+});
+</script>
+    {% endblock %}
+
+    

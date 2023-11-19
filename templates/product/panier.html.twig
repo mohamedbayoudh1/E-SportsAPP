@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <body class="page-body">
+
+    <!-- navbar -->
+    <!-- /.navbar -->
+
+    <!-- main content -->
+    <main class="checkout-order-body main-content gradient-lg position-relative">
+
+        <!-- overlay -->
+        <div class="overlay pe-n br-n bp-c bs-c o-30" style="background-image: url(assets/img/bg/bg_shape.png);"></div>
+        <!-- /.overlay -->
+
+        <!-- content area -->
+        <div class="content-section text-light">
+            <div class="container">
+                <header class="header text-center mb-6">
+                    <div class="row gutters-y">
+                        <div class="col-12 pt-8">
+                            <div class="timeline-horizontal">
+                                <div class="timeline-item flex-1 p-0" data-step="&#xe60d;">
+                                    <div class="pt-8 pb-7 px-2 px-sm-4 border-left border-bottom border-secondary">
+                                        <span class="text-uppercase small-3 fw-600">Votre Panier</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="position-relative">
+                    <div class="row">
+                        <div class="col-lg-8 mb-8 mb-lg-0">
+                            <div>
+                                <div class="mb-7">
+
+                                    <h4>Votre Panier</h4>
+
+                                    <hr class="border-secondary my-8">
+
+                                    <div class="row">
+
+
+                                        <!-- item -->
+                                        {% for adproduit in produits %}
+                                        <div class="col-md-12 mb-4">
+
+                                            <div class="product-item">
+                                                <div class="row align-items-center no-gutters">
+                                                    <div class="item_img d-none d-sm-block">
+                                                        <a href="store-product.html">
+
+                                                            <img class="checkout-order-img img bl-3 text-primary" src="{{asset('imageProduits/'~adproduit.getIdproduit().image)}}" alt="Games Store">
+                                                        </a>
+                                                    </div>
+                                                    <div class="item_content flex-1 flex-grow pl-0 pl-sm-6 pr-6">
+
+                                                        <a href="store-product.html">
+                                                            <h6 class="item_title ls-1 small-1 fw-600 text-uppercase mb-1">{{ adproduit.getIdproduit().nom }}</h6>
+                                                        </a>
+
+
+                                                        {% if adproduit.getIdproduit().quantite ==0 %}
+                                                            <div class="position-absolute t-2 l-60 r-18 px-4 py-1 bg-danger text-white text-uppercase fw-600">Non Disponilbe</div>
+                                                        {% endif %}
+
+
+                                                    </div>
+
+
+                                                    <div class="item_price d-none d-sm-block">
+                                                        <div class="row align-items-center h-100 no-gutters">
+                                                            <div class="text-right">
+
+                                                                <span class="fw-600">{{ adproduit.getIdproduit().prix }}<img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pl-4">
+                                                        <div class="row align-items-center h-100 no-gutters">
+                                                            <div class="text-right lead-2">
+                                                                <a href="{{path('supprimer_du_panierB', {'id': adproduit.getIdproduit.id }) }}" class="ti-trash text-warning"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.item -->
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <hr class="border-secondary my-4">
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                            <div class="col-lg-4">
+                                <br> <br>  <br>
+                                <div class="archive border border-secondary rounded">
+                                    <div class="bg-secondary px-4 py-1"><span class="fw-600 ls-1 text-uppercase lead-1">Sommaire du panier</span></div>
+                                    <div class="p-4">
+                                        <ul class="list-unstyled small mb-0">
+
+
+
+
+                                            <li>
+                                                <div class="d-flex small-1 fw-600">
+                                                    <div>Total</div>
+                                                    <div class="ml-auto text-warning" >{{ prixtotal }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></div>
+
+
+                                                </div>
+
+                                            </li>
+                                            </li>
+                                            <li><hr class="my-3 border-secondary"></li>
+                                            <li>
+                                            <li>
+                                                <div class="d-flex small-1 fw-600">
+                                                    <div>Total en Dinar</div>
+
+                                                    <div class="ml-auto text-warning" >{{ conversion }} DNT</div>
+
+                                                </div>
+
+                                            </li>
+                                            <li><hr class="my-3 border-secondary"></li>
+                                            <li>
+                                                {% if etat %}
+                                                <a href="{{ path('acheterproduit') }}" class="btn btn-lg btn-block btn-warning mt-4"   >Confirmé l'achat</a>
+                                                {% else %}
+                                                <a  class="btn btn-lg btn-block btn-secondary mt-4" >Confirmé l'achat</a>
+                                                {% endif %}
+
+                                            </li>
+
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="archive border border-secondary rounded">
+                                    <div class="bg-secondary px-4 py-1"><span class="fw-600 ls-1 text-uppercase lead-2">Partagez Votre Achat</span></div>
+                                    <div class="p-4">
+                                        <ul class="list-unstyled small mb-0">
+
+
+
+
+                                            <li>
+                                                <div class="d-flex small-1 fw-600">
+                                                    <div>Partagez votre achat avec vos amis dans le groupe en postant à ce sujet</div>
+
+
+
+                                                </div>
+
+                                            </li>
+
+
+                                            <li>
+
+                                                <a href="{{ path('our_groupe') }}" class="btn btn-lg btn-block btn-warning mt-4"   ><img src="{{ asset('back_office/partager.png') }}" alt="coin" style="width: 16px; height: 16px;"> Partager</a>
+
+                                            </li>
+
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content area -->
+
+    </main>
+
+    <!-- footer -->
+
+    <!-- /.footer -->
+
+    <!-- sign Up -->
+
+    <!-- /.sign Up -->
+
+    <!-- offcanvas-cart -->
+    <!-- /.offcanvas-cart -->
+
+
+    </body>
+
+{% endblock %}

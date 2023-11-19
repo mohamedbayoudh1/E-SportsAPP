@@ -1,0 +1,247 @@
+{% block my_head %}
+
+
+   <style>
+
+
+      .container {
+         width: 300px;
+         margin: 50px auto;
+      }
+      .svg-success {
+         display: inline-block;
+         vertical-align: top;
+         height: 300px;
+         width: 300px;
+         opacity: 1;
+         overflow: visible;}
+
+      @keyframes success-tick {
+         0% {
+            stroke-dashoffset: 16px;
+            opacity: 1
+         }
+
+         100% {
+            stroke-dashoffset: 31px;
+            opacity: 1
+         }
+      }
+
+      @keyframes success-circle-outline {
+         0% {
+            stroke-dashoffset: 72px;
+            opacity: 1
+         }
+
+         100% {
+            stroke-dashoffset: 0px;
+            opacity: 1
+         }
+      }
+
+      @keyframes success-circle-fill {
+         0% {
+            opacity: 0;
+         }
+
+         100% {
+            opacity: 1;
+         }
+      }
+
+      .success-tick {
+         fill: none;
+         stroke-width: 1px;
+         stroke: #ffffff;
+         stroke-dasharray: 15px, 15px;
+         stroke-dashoffset: -14px;
+         animation: success-tick 450ms ease 1400ms forwards;
+         opacity: 0;
+      }
+
+      .success-circle-outline {
+         fill: none;
+         stroke-width: 1px;
+         stroke: #81c038;
+         stroke-dasharray: 72px, 72px;
+         stroke-dashoffset: 72px;
+         animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+         opacity: 0;
+      }
+
+      .success-circle-fill {
+         fill: #81c038;
+         stroke: none;
+         opacity: 0;
+         animation: success-circle-fill 300ms ease-out 1100ms forwards;
+      }
+
+
+      @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+         .success-tick {
+            stroke-dasharray: 0;
+            stroke-dashoffset: 0;
+            animation: none;
+            opacity: 1;
+         }
+
+         .success-circle-outline {
+            stroke-dasharray: 0;
+            stroke-dashoffset: 0;
+            animation: none;
+            opacity: 1;
+         }
+
+         .success-circle-fill {
+            animation: none;
+            opacity: 1;
+         }
+      }
+
+
+
+      .star-rating {
+         font-size: 14rem; /* adjust as needed */
+         display: inline-block;
+         color: #ddd; /* grayed-out stars */
+      }
+
+      .star-rating input[type="radio"] {
+         display: none;
+      }
+
+      .star-rating label {
+         float: right;
+         cursor: pointer;
+      }
+
+      .star-rating label:before {
+         content: "\2606"; /* empty star */
+      }
+
+      .star-rating input[type="radio"]:checked ~ label:before {
+         content: "\2605"; /* filled star */
+         color: #f1c40f; /* yellow star color */
+      }
+
+      /* half stars */
+      .star-rating .half:before {
+         content: "\E804"; /* Unicode half-star symbol */
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 50%;
+         overflow: hidden;
+      }
+
+      .star-rating input[type="radio"]:checked ~ .half:before {
+         content: "\E805"; /* Unicode filled half-star symbol */
+         color: #f1c40f; /* yellow half-star color */
+      }
+
+      .star-rating input[type="radio"]:checked ~ .half:after {
+         content: "\E804"; /* Unicode half-star symbol */
+         color: #f1c40f; /* yellow half-star color */
+         width: 50%;
+         position: absolute;
+         top: 0;
+         left: 0;
+         overflow: hidden;
+      }
+
+      .star-rating label.half:before {
+         content: "\E804";
+      }
+
+      .star-rating label.half:hover:before,
+      .star-rating label.half:hover ~ label:before {
+         content: "\E805";
+         color: #f1c40f;
+      }
+      .star-rating label:hover:before,
+      .star-rating input[type="radio"]:hover ~ label:before {
+         content: "\2605";
+         color: #f1c40f;
+      }
+
+      .star-rating input[type="radio"]:hover ~ .half:before {
+         content: "\E805";
+         color: #f1c40f;
+      }
+
+      .star-rating label.half:hover:before,
+      .star-rating label.half:hover ~ label:before {
+         content: "\E805";
+         color: #f1c40f;
+      }
+
+   </style>
+
+
+{% if canAddReview %}
+   <body style="background-color: #0F131E;">
+   <form name="review_jeux" method="post" style="margin: 17rem;text-align: center;">
+      <div id="review_jeux">
+         <div>
+            <div id="review_jeux_rating" class="star-rating">
+               <input type="radio" id="review_jeux_rating_5" name="review_jeux[rating]" required="required" value="5" onclick="submitReview()">
+               <label for="review_jeux_rating_5" class="required"></label>
+
+               <input type="radio" id="review_jeux_rating_4" name="review_jeux[rating]" required="required" value="4" onclick="submitReview()">
+               <label for="review_jeux_rating_4" class="required"></label>
+
+               <input type="radio" id="review_jeux_rating_3" name="review_jeux[rating]" required="required" value="3" onclick="submitReview()">
+               <label for="review_jeux_rating_3" class="required"></label>
+
+               <input type="radio" id="review_jeux_rating_2" name="review_jeux[rating]" required="required" value="2" onclick="submitReview()">
+               <label for="review_jeux_rating_2" class="required"></label>
+
+               <input type="radio" id="review_jeux_rating_1" name="review_jeux[rating]" required="required" value="1" onclick="submitReview()">
+               <label for="review_jeux_rating_1" class="required"></label>
+
+            </div>
+         </div>
+         <div>
+            <button type="submit" id="review_jeux_submit" name="review_jeux[submit]" style="display: none;">Submit</button>
+         </div>
+         <input type="hidden" id="review_jeux__token" name="review_jeux[_token]" value="{{ csrf_token('review_jeux') }}"></div>
+   </form>
+   </body>
+   {% if form_errors(form) %}
+      <div class="alert alert-danger">
+         {{ form_errors(form) }}
+      </div>
+   {% endif %}
+{% else %}
+   <body style="background-color:#0F131E";>
+   <div class="container">
+      <svg style="margin-top: 10rem;" xmlns="http://www.w3.org/2000/svg" class="svg-success" viewBox="0 0 24 24">
+         <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+            <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
+            <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
+            <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
+         </g>
+      </svg>
+   </div>
+   <h1 style="text-align-last: center;text-align-last: center;font-variant: all-petite-caps;font-size: 3rem;color:#80b544;" >Merci vous avez deja partager votre avis!</h1>
+   <script>
+      setTimeout(function(){
+         window.location.href = "{{ path('afficher_les_jeux') }}";
+      }, 5000);
+   </script>
+   </body>
+
+{% endif %}
+
+   <script>
+      const submitButton = document.getElementById('review_jeux_submit');
+      const starRating = document.getElementById('review_jeux_rating');
+
+      starRating.addEventListener('click', (event) => {
+         if (event.target.tagName === 'LABEL') {
+            submitButton.click();
+         }
+      });
+   </script>
+{% endblock %}

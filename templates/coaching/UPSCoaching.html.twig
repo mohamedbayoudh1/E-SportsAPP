@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+{% block title %}AllCourses{% endblock %}
+{% block css %}
+    <style>
+        .form-style {
+            padding: 50px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+            width: 50%;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        ::placeholder {
+            color: #FFFFFF!important;
+        }
+        /* Style error messages */
+        .has-error .form-control {
+            border-color: #a94442; /* Change border color to red */
+        }
+        .has-error .help-block {
+            color: #a94442; /* Change text color to red */
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+
+
+
+    <link rel="stylesheet" href="{{ asset('rbt-modules1eb7.css')}}">
+    <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+    <center>
+        <h2 style="margin: 0;padding: 50px">FEEL<span style="color: #7228e2;"> FREE</span> TO Planning <span style="color: #7228e2;"></span><br />
+            YOUR <span style="color: #7228e2;">Coaching Session</span></h2>
+    </center>
+    <center>
+        {{ form_start(form, {'attr': {'novalidate': true}}) }}
+
+        <div class="row">
+            <div style="margin-left: 21%" class="col-7">
+                <div>
+                    {{ form_widget(form.titre) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.titre) }}
+                    </div>
+
+                </div>
+                <div class="edgtf-eh-item-inner">
+                    {{  form_label(form.date) }}
+                    {{ form_widget(form.date) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.date) }}
+                    </div>
+                </div>
+
+                <div class="edgtf-eh-item-inner">
+                    {{ form_widget(form.description)}}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+                <div class="edgtf-eh-item-inner">
+                    {{  form_label(form.nbreHeureSeance) }}
+                    {{ form_widget(form.nbreHeureSeance, {'attr': {'id': 'nbreHeureSeance'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.nbreHeureSeance) }}
+                    </div>
+                </div>
+                <div class="edgtf-eh-item-inner">
+                    {{  form_label(form.coachSkills) }}
+                    {{ form_widget(form.coachSkills, {'attr': {'id': 'nbreHeureSeance'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.coachSkills) }}
+                    </div>
+                </div>
+
+                <div><button  type="submit" class="mb-5 mt-5 edgtf-btn edgtf-btn-outline edgtf-btn-huge">planifier</button></div>
+
+            </div>
+        </div>
+
+
+
+        {{ form_end(form) }}
+
+    </center>
+
+<!--
+
+  <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+                console.log(document.querySelector('#nbreHeureSeance'));
+                console.log(document.querySelector('#prixTin'));
+
+                const nbreHeureSeance = document.querySelector('#nbreHeureSeance');
+                const prixT = document.querySelector('#prixTin');
+
+
+                console.log(nbreHeureSeance);
+                console.log(prixT);
+
+                // define the hourly rate for the coach
+                const coachPrixHeure = 10;
+
+                // add an event listener to the nbreHeureSeance field
+                nbreHeureSeance.addEventListener('input', (event) => {
+                    console.log(event.target.value);
+
+                    // get the selected value from the nbreHeureSeance field
+                    const nbreHeure = event.target.valueAsNumber;
+                    console.log(nbreHeure);
+
+                    // calculate the total price based on the selected number of hours
+                    const totalPrix = nbreHeure * coachPrixHeure;
+                    console.log(totalPrix);
+
+                    // update the value of the prixT field
+                    prixT.value = totalPrix;
+                });
+
+        });
+
+
+    </script>
+
+
+ -->
+
+{% endblock %}

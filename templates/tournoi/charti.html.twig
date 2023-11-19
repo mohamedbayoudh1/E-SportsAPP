@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<canvas id="myChart"></canvas>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chartData = JSON.parse('{{ chartData|raw }}');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+    });
+</script>
+</body>
+</html>

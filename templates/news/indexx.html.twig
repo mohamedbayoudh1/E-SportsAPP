@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>News</h1>
+
+    <form action="{{ path('afficher_les_news') }}" method="get">
+        <div class="form-group">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" class="form-control" value="{{ searchTerms|join(' ') }}">
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody id="news-list">
+        {% for item in news %}
+            <tr>
+                <td>{{ item.titre }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(news) }}
+    <script>
+        let timeoutId = null;
+        document.querySelector('#search').addEventListener('input', function() {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function() {
+                searchNews(document.querySelector('#search').value);
+            }, 500);
+        });
+
+        function searchNews(searchTerm) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '{{ path('afficher_les_news') }}?search=' + searchTerm);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    let newsList = document.querySelector('#news-list');
+                    let response = xhr.response;
+                    if (searchTerm) {
+                        newsList.innerHTML = response;
+                    } else {
+                        newsList.innerHTML = response.trim().startsWith('<tr') ? response : response.substring(response.indexOf('<tr'), response.lastIndexOf('</tr>') + 5);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+    </script>
+
+{% endblock %}

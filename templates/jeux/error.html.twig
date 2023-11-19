@@ -1,0 +1,117 @@
+<style>
+
+    .container {
+        width: 300px;
+        margin: 50px auto;
+    }
+    .svg-success {
+        display: inline-block;
+        vertical-align: top;
+        height: 300px;
+        width: 300px;
+        opacity: 1;
+        overflow: visible;}
+
+    @keyframes success-tick {
+        0% {
+            stroke-dashoffset: 16px;
+            opacity: 1
+        }
+
+        100% {
+            stroke-dashoffset: 31px;
+            opacity: 1
+        }
+    }
+
+    @keyframes success-circle-outline {
+        0% {
+            stroke-dashoffset: 72px;
+            opacity: 1
+        }
+
+        100% {
+            stroke-dashoffset: 0px;
+            opacity: 1
+        }
+    }
+
+    @keyframes success-circle-fill {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .success-tick {
+        fill: none;
+        stroke-width: 1px;
+        stroke: #ffffff;
+        stroke-dasharray: 15px, 15px;
+        stroke-dashoffset: -14px;
+        animation: success-tick 450ms ease 1400ms forwards;
+        opacity: 0;
+    }
+
+    .success-circle-outline {
+        fill: none;
+        stroke-width: 1px;
+        stroke: #81c038;
+        stroke-dasharray: 72px, 72px;
+        stroke-dashoffset: 72px;
+        animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+        opacity: 0;
+    }
+
+    .success-circle-fill {
+        fill: #81c038;
+        stroke: none;
+        opacity: 0;
+        animation: success-circle-fill 300ms ease-out 1100ms forwards;
+    }
+
+
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        .success-tick {
+            stroke-dasharray: 0;
+            stroke-dashoffset: 0;
+            animation: none;
+            opacity: 1;
+        }
+
+        .success-circle-outline {
+            stroke-dasharray: 0;
+            stroke-dashoffset: 0;
+            animation: none;
+            opacity: 1;
+        }
+
+        .success-circle-fill {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
+</style>
+<body style="background-color:#0F131E";>
+<div class="container">
+    <svg style="margin-top: 10rem;" xmlns="http://www.w3.org/2000/svg" class="svg-success" viewBox="0 0 24 24">
+        <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+            <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
+            <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
+            <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
+        </g>
+    </svg>
+</div>
+<h1 style="text-align-last: center;text-align-last: center;font-variant: all-petite-caps;font-size: 3rem;color:#80b544;" >{{ message }}</h1>
+<h1 style="text-align-last: center;text-align-last: center;font-variant: all-petite-caps;font-size: 3rem;color:#80b544;" >{{ nomGame }}</h1>
+<script>
+    setTimeout(function(){
+        window.location.href = "{{ path('afficher_les_jeux_back') }}";
+    }, 5000);
+</script>
+</body>
+

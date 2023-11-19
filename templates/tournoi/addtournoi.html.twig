@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <header>
+        <link rel='stylesheet' id='overworld-edge-modules-css' href="{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}" type='text/css' media='all' />
+
+        <link rel='stylesheet' id='overworld-edge-style-dynamic-css'
+              href="{{ asset(' wp-content/themes/overworld/assets/css/style_dynamicf419.css?ver=1579780623') }}"
+              type='text/css' media='all'>
+        <link rel='stylesheet' id='overworld-edge-woo-css'
+              href="{{ asset('wp-content/themes/overworld/assets/css/woocommerce.min1eb7.css?ver=6.0.3') }}"
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='wp-block-library-css' href="{{ asset('wp-includes/css/dist/block-library/style.min1eb7.css?ver=6.0.3')}}" type='text/css' media='all' />
+        <style>
+            .has-error {
+                color: red;
+            }
+        </style>
+    </header>
+    <br>
+    <br>
+    <br>
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}"
+                                                   alt="Background shape"></div>
+
+
+    {{ form_start(form, {'attr': {'novalidate': true}}) }}
+
+    <div class="edgtf-row-grid-section-wrapper ">
+        <div class="edgtf-row-grid-section">
+            <div class="vc_row wpb_row vc_row-fluid">
+                <div class="wpb_column vc_column_container vc_col-sm-12">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                            <div class="edgtf-elements-holder   edgtf-two-columns  edgtf-responsive-mode-1024 edgtf-one-column-alignment-left">
+                                <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-1824"
+                                     data-1025-1399="0px 51px 0 0" data-769-1024="103px 123px 0 0"
+                                     data-681-768="103px 55px 0 0" data-680="103px 0px 0 0">
+                                    <div class="edgtf-eh-item-inner">
+                                        <div class="edgtf-eh-item-content edgtf-eh-custom-1824"
+                                             style="padding: 0px 57px 0 0">
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <h3 style="color: white">Create<span
+                                                                style="color: #7228e2;"> le Mieux,</span>
+                                                        Tournoi pour 4 group seulement
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="vc_empty_space" style="height: 20px"><span
+                                                        class="vc_empty_space_inner"></span></div>
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+
+                                                </div>
+                                            </div>
+                                            <div class="vc_empty_space" style="height: 45px"><span
+                                                        class="vc_empty_space_inner"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-7917"
+                                     data-769-1024="10px 0 130px 0" data-681-768="10px 0 130px 0"
+                                     data-680="10px 0 130px 0">
+                                    <div class="edgtf-eh-item-inner">
+                                        <div class="edgtf-eh-item-content edgtf-eh-custom-7917"
+                                             style="padding: 133px 0 145px 0">
+                                            <div role="form" class="wpcf7" id="wpcf7-f505-p1492-o1" lang="en-US"
+                                                 dir="ltr">
+                                                <div class="screen-reader-response"><p role="status" aria-live="polite"
+                                                                                       aria-atomic="true"></p>
+                                                    <ul></ul>
+                                                </div>
+
+
+
+
+                                                <div class="edgtf-cf7-custom-form">
+                                                    <div class="edgtf-custom-text-area">
+                                                        {{ form_widget(form.nomtournoi, {'attr': {'class': 'edgtf-cf7-custom-form', 'placeholder': 'Name Tournoi'}}) }}
+                                                        <div style="background-color: transparent;color: red" class="alert-danger">
+                                                            {{ form_errors(form.nomtournoi,{ 'attr': { 'class': 'form-control', 'style': 'color: red' } }) }}
+                                                        </div>
+                                                      </div>
+                                                    <div class="edgtf-grid-row edgtf-grid-tiny-gutter">
+                                                        <div class="wpcf7-form-control-wrap">
+                                                            {{ form_widget(form.device, {'attr': {'class': 'wpcf7-form-control wpcf7-textarea', 'placeholder': 'device'}}) }}
+                                                            <div style="background-color: transparent;color: red" class="alert-danger">
+                                                                {{ form_errors(form.device,{ 'attr': { 'class': 'form-control', 'style': 'color: red' } }) }}
+                                                            </div>
+                                                           </div>
+
+                                                        {{ form_widget(form.nb_team, {'attr': {'hidden': 'hidden'}}) }}
+
+
+                                                            {{ form_widget(form.nb_joueur_team, {'attr': {'class': 'form-control form-control-sm h-auto', 'placeholder': 'Max Joueur', 'value':'0','style' : 'color:white;height:150px;background-color:#22152c;width:100%;border: none;margin:0px 0px 10px;padding:24px 33px'}}) }}
+                                                            <div style="background-color: transparent;color: red" class="alert-danger">
+                                                                {{ form_errors(form.nb_joueur_team,{ 'attr': { 'class': 'form-control', 'style': 'color: red' } }) }}
+                                                            </div>
+                                                         </div>
+                                                        <div class="edgtf-grid-col-6 edgtf-custom-text-input">
+                                                            {{ form_widget(form.datestart, {'attr': {'placeholder': 'Enter start date', 'style': 'background-color: #22152c; color: white;' }}) }}
+                                                            {% if form_errors(form.datestart) %}
+                                                                <div class="" style="color: red;">
+                                                                    {{ form_errors(form.datestart) }}
+                                                                </div>
+                                                            {% endif %}
+
+                                                        </div>
+                                                        <div class="edgtf-grid-col-6 edgtf-custom-text-input">
+
+                                                            {{ form_widget(form.logos, {'attr': {'class': 'edgtf-cf7-custom-form', 'placeholder': 'Add Logo'}}) }}
+                                                            <div style="background-color: transparent;color: red" class="alert-danger">
+                                                                {{ form_errors(form.logos,{ 'attr': { 'class': 'form-control', 'style': 'color: red' } }) }}
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <br>
+                                                    <div>
+                                                        <button class="edgtf-btn edgtf-btn-outline edgtf-btn-huge wpcf7-form-control wpcf7-submit edgtf-btn-stripe">
+                                                            Add
+                                                            <div class="edgtf-btn-bg-holder"></div>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="wpcf7-response-output" aria-hidden="true"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

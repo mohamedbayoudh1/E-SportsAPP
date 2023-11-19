@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}*
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+    <link rel="stylesheet" href="{{ asset('rbt-modules1eb7.css') }}">
+    <link rel='stylesheet' id='overworld-edge-modules-css'
+          href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css'
+          media='all'/>
+
+
+    <header>
+
+
+        <link rel='stylesheet' id='overworld-edge-modules-css'
+              href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css'
+              media='all'/>
+
+    </header>
+
+
+    <body>
+    <h1 class="edgtf-st-title">
+        <center> GROUPE</center>
+    </h1>
+
+    <br><br><br><br>
+
+    <center>
+        <div class="edgtf-st-button mb-9"><a itemprop="url" href="{{ path('app_group') }}"
+                                        style="color: #ffffff;margin: 55px 0 0"
+                                        class="edgtf-btn edgtf-btn-small edgtf-btn-outline"> <span
+                        class="edgtf-btn-text">Ajouter groupe</span> </a></div>
+    </center>
+
+
+
+
+    <div class="edgtf-row-grid-section-wrapper edgtf-content-aligment-left" >
+        <div class="edgtf-row-grid-section">
+
+            <div class="vc_row wpb_row vc_row-fluid">
+
+                <div class="wpb_column vc_column_container vc_col-sm-6">
+
+
+                    <div class="vc_column-inner">
+
+
+                        <div class="wpb_wrapper">
+
+
+                            <div class="edgtf-tournament-list-holder edgtf-grid-list edgtf-disable-bottom-space edgtf-three-columns edgtf-normal-space"
+
+                                 data-number-of-columns="three" data-enable-navigation="no" data-enable-pagination="no"
+                                 data-slider-margin="no">
+
+                                <div class="edgtf-pl-inner edgtf-outer-space ">
+                                    {% for g in groupe %}
+                                    <div class="edgtf-tournament edgtf-item-space edgtf-info-on-image">
+
+                                        <div class="edgtf-tournament-inner">
+
+                                            <div class="edgtf-tournament-image">
+
+                                                <img width="800" height="507"
+                                                     src="{{ asset('wp-content/uploads/2019/10/tour-list-img-5.jpg') }}"
+                                                     class="attachment-full size-full" alt="a" loading="lazy"
+                                                     srcset="{{ asset('wp-content/uploads/2019/10/tour-list-img-5.jpg 800w') }},{{ asset('wp-content/uploads/2019/10/tour-list-img-5-768x487.jpg 768w') }}"
+                                                     sizes="(max-width: 800px) 100vw, 800px"/>
+
+                                                <div class="edgtf-tournament-info" >
+
+                                                    <div class="edgtf-tournament-top-info edgtf-tournament-section">
+
+                                                        <div class="edgtf-tournament-date">
+                                                            <small> Nom de groupe :{{ g.nomgroupe }}<br> </small></div>
+                                                        <div class="edgtf-tournament-time">
+                                                            <small>description :{{ g.description }}<br></small></div>
+                                                        <div class="edgtf-tournament-categories"><span
+                                                                    class="edgtf-tournament-category"><small> nombre de user : {{ g.nbruser }}<br></small></span>
+                                                        </div>
+
+                                                        <div class="edgtf-st-button"><a itemprop="url" href="{{ path('onegroupe',{'id':g.getId}) }}"
+
+                                                                                        style="color: #ffffff;margin: 55px 0 0"
+                                                                                            class="edgtf-btn edgtf-btn-small edgtf-btn-outline">
+                                                                <span  class="edgtf-btn-text">Rejoindre</span> </a></div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+<header>
+
+  <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+  <link rel='stylesheet'  href="https://fonts.googleapis.com/css2?family=Android+101&display=swap"  />
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+</header>
+
+
+
+<div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}"
+                                               alt="Background shape"></div>
+          <br><br>
+<center>
+
+  <h1 style="color: white;font-size: 90px; font-family: 'Android 101', sans-serif;" class="edgtf-st-title animated animate__bounceInDown">CATEGORIES<br/></h1>
+
+</center>
+
+
+
+          <br><br><br><br><br><br>
+
+<div class="edgtf-row-grid-section-wrapper edgtf-content-aligment-left">
+  <div class="edgtf-row-grid-section">
+    <div class="vc_row wpb_row vc_row-fluid">
+      <div class="wpb_column vc_column_container vc_col-sm-12">
+        <div class="vc_column-inner">
+          <div class="wpb_wrapper">
+
+            <div class="edgtf-tournament-list-holder edgtf-grid-list edgtf-disable-bottom-space edgtf-three-columns edgtf-normal-space"
+                 data-number-of-columns="three" data-enable-navigation="no"
+                 data-enable-pagination="no"
+                 data-slider-margin="no">
+
+
+
+              <div class="edgtf-pl-inner edgtf-outer-space ">
+                {% for ca in c %}
+                  <div class="edgtf-tournament edgtf-item-space edgtf-info-on-image">
+                    <div class="edgtf-tournament-inner">
+                      <div class="edgtf-tournament-image">
+
+
+                        {% if ca.nom != 'Recharge de compte' %}
+
+                        <a class="edgtf-tournament-overlay-link" itemprop="url" href="" title="NOM CATEGORIE"><h4 style="font-family: 'Android 101', sans-serif;">{{ ca.nom }} </h4></a>
+                        <img width="800" height="507"
+                             src="{{ asset("wp-content/uploads/2019/10/catimgg.png" ) }}"
+                             class="attachment-full size-full" alt="a" loading="lazy"
+                             src="{{ asset("wp-content/uploads/2019/10/catimgg.png") }},{{ asset("wp-content/uploads/2019/10/catimgg.png") }}"
+                             sizes="(max-width: 800px) 100vw, 800px"/>
+
+                        <div class="edgtf-tournament-meta-item">
+                          <div class="edgtf-tournament-meta-icon ion-ios-game-controller-b"></div>
+                          <div class="edgtf-tournament-meta-info">
+
+
+
+                          </div>
+
+
+
+                          {% endif %}
+                        </div>
+                            </center>
+                        <a style="font-family: 'Android 101', sans-serif;" class="edgtf-tournament-overlay-link" itemprop="url" href="{{path('affichecategg',{'id':ca.getId }) }}"
+                           title="NOM CATEGORIE"></a>
+
+
+                      </div>
+
+
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+{% endblock %}

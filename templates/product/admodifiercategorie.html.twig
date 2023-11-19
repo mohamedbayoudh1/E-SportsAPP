@@ -1,0 +1,33 @@
+
+
+                {% extends 'base1.html.twig' %}
+
+                {% block body %}
+                    <div class="ml-10 col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body" style="width: 200%; position center">
+                                <h4 class="card-title">MODIFIER UNE CATEGORIE</h4>
+
+                                {{ form_start(form) }}
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">TYPE</label>
+                                    {{ form_widget(form.type, {'attr': {'class': 'form-control', 'placeholder': 'SAISIR LE TYPE DE LA CATÉGORIE'}}) }}
+                                    <div style="background-color: transparent;color: red" class="alert-danger">
+                                        {{ form_errors(form.type) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">NOM</label>
+                                    {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'SAISIR LE NOM DE LA CATÉGORIE'}}) }}
+                                    <div style="background-color: transparent;color: red" class="alert-danger">
+                                        {{ form_errors(form.nom) }}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary me-2">MODIFIER CATEGORIE</button>
+                                {{ form_end(form) }}
+
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+

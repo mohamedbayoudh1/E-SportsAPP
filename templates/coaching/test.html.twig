@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+{% block title %}AllCourses{% endblock %}
+{% block css %}
+    <style>
+        .form-style {
+            padding: 50px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+            width: 50%;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        ::placeholder {
+            color: #FFFFFF!important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <header>
+        <link rel='stylesheet' id='overworld-edge-modules-css' href="{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='overworld-edge-style-dynamic-css'
+              href="{{ asset(' wp-content/themes/overworld/assets/css/style_dynamicf419.css?ver=1579780623') }}"
+              type='text/css' media='all'>
+        <link rel='stylesheet' id='overworld-edge-woo-css'
+              href="{{ asset('wp-content/themes/overworld/assets/css/woocommerce.min1eb7.css?ver=6.0.3') }}"
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='wp-block-library-css' href="{{ asset('wp-includes/css/dist/block-library/style.min1eb7.css?ver=6.0.3')}}" type='text/css' media='all' />
+    </header>
+
+
+    <div class="edgtf-content">
+        <div class="edgtf-content-inner">
+            <div class="edgtf-title-holder edgtf-centered-type edgtf-title-va-header-bottom edgtf-preload-background edgtf-has-bg-image edgtf-bg-responsive-disabled edgtf-h1-title"
+                 style="height: 305px;background-color: #ffffff;background-image:url(wp-content/uploads/2020/01/contact-title-img-1.jpg);"
+                 data-height="305">
+                <div class="edgtf-title-image">
+                    <img itemprop="image" src="{{ asset('wp-content/uploads/2020/01/contact-title-img-1.jpg') }}"
+                         alt="a"/>
+                </div>
+                <div class="edgtf-title-wrapper" style="height: 305px">
+                    <div class="edgtf-title-inner">
+                        <div class="edgtf-grid">
+                            <h1 style="color: white" class="edgtf-page-title entry-title">Create Your Team</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+
+    <form  method="post">
+
+        <link rel="stylesheet" href="{{ asset('rbt-modules1eb7.css')}}">
+        <link rel='stylesheet' id='overworld-edge-modules-css' href='{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}' type='text/css' media='all' />
+        <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+        <center>
+            <h2 style="margin: 0;padding: 50px">FEEL<span style="color: #7228e2;"> FREE</span> TO ADD <span style="color: #7228e2;"></span><br />
+                YOUR <span style="color: #7228e2;">Course</span></h2>
+        </center>
+        <center>
+
+            <div class="row">
+                <div style="margin-left: 21%" class="col-7">
+                    <div>
+                        {{ form_widget(form.titre) }}
+                        {{ form_errors(form.titre) }}
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.description) }}
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.video) }}
+                    </div>
+
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.image) }}
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.prix) }}
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.niveau) }}
+                    </div>
+                    <div class="edgtf-eh-item-inner">
+                        {{ form_widget(form.idJeux) }}
+                    </div>
+                    {% if form.vars.errors|length > 0 %}
+                        <div class="alert alert-danger">
+                            {% for error in form.vars.errors %}
+                                <div>{{ error.message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+
+                    <div><button href="{{path('addC')}}" type="submit" class="edgtf-btn edgtf-btn-outline edgtf-btn-huge">add course</button></div>
+
+
+                </div>
+            </div>
+
+        </center>
+
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+    <center>
+
+        <div class="edgtf-cf7-custom-form">
+            {{ form_widget(form.nom_team, {'attr': {'class': 'edgtf-cf7-custom-form', 'placeholder': 'Enter the title'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.nb_joueurs, {'attr': {'class': 'edgtf-cf7-custom-form', 'placeholder': 'Enter the description'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.about, {'attr': {'class': 'edgtf-cf7-custom-form', 'placeholder': 'Enter the video'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.logo, {'attr': {'class': 'form-control', 'placeholder': 'Enter the image'}}) }}
+        </div>
+        {{ form_widget(form.ajouter, {'attr': {'class': 'edgtf-btn edgtf-btn-outline edgtf-btn-huge wpcf7-form-control wpcf7-submit', 'placeholder': 'Enter the image'}}) }}
+
+
+    </center>
+
+{% endblock %}

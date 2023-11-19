@@ -1,0 +1,79 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+    <div class="col-lg-9 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Table des Actualité</h4>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TITRE</th>
+                            <th>DATE</th>
+                            <th>Image</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                            <th>Consulter les commentaire</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for f in news %}
+                            <tr>
+                                <td>{{ f.id }}</td>
+                                <td>{{ f.titre }}</td>
+                                <td>{{ f.dateN|date('Y-m-d H:i:s')}}</td>
+                                <td>
+                                    <a id="show-image-button-{{ f.id }}" href="{{ asset('./uploads/pictureJeux/'~f.image) }}" target="_blank"><img src="{{ asset('./uploads/pictureJeux/'~f.image) }}" id="original-image"></a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('modifier_news', {'id': f.id}) }}" class="btn btn-outline-secondary btn-icon-text">  Modifier <i class="mdi mdi-file-check btn-icon-append"></i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('supprimer_news', {'id': f.id}) }}" class="btn btn-outline-danger btn-icon-text">  Supprimer <i class="mdi mdi-bitbucket"></i></a>
+
+                                </td>
+                                <td>
+                               <a href="/newsback/{{ f.id }}"> <button type="button" class="btn btn-warning btn-icon-text">
+                                    <i class="mdi mdi-comment"></i> Commentaires </button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 1rem;">
+                    {{ knp_pagination_render(news, 'pagination.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin stretch-card">
+
+            <div class="card" >
+                <div class="card-body" >
+                    <h4 class="card-title">Ajouter une actualité</h4>
+                    {{ form(form) }}
+                    {% if update_form is defined %}
+                        {{ form(update_form) }}
+                    {% endif %}
+                </div> </div>
+        </div>
+    </div>
+
+    <!-- Form -->
+
+
+    <script>
+        function showOriginalImage(event) {
+            var originalImageSrc = event.target.firstChild.src;
+            window.location.href = originalImageSrc;
+        }
+
+        var buttons = document.querySelectorAll('[id^="show-image-button-"]');
+        buttons.forEach(function(button) {
+            button.addEventListener("click", showOriginalImage);
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AllCourses{% endblock %}
+
+{% block body %}
+
+    <main class="main-content">
+
+        <div class="overlay overflow-hidden pe-n"><img src="{{ asset('front_office/assets/img/bg/bg_shape.png') }}" alt="Background shape"></div>
+        <!-- Start Content Area -->
+        <div class="content-section text-light pt-8">
+            <div class="container">
+                <div class="row gutters-y">
+                    <div class="col-12">
+                        <header>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb-product breadcrumb-nowrap breadcrumb breadcrumb-angle bg-transparent pl-0 pr-0 mb-0">
+                                    <li class="breadcrumb-item"><a href="{{path('afficher_les_news')}}">Actualité des jeux</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ news.titre }}</li>
+                                </ol>
+                            </nav>
+                            <h3 class="product_name mb-4">{{ news.titre }}</h3>
+                            <div class="d-flex flex-wrap align-items-center">
+                                <ul class="tag-list d-none d-md-flex flex-wrap list-unstyled mb-0">
+                                    <li class="tag-item"><a href="{{ path('afficher_les_jeux') }}" class="badge badge-warning fw-600">{{ gameName }}</a></li>
+                                    <li class="tag-item"><a href="#" class="text-unset release-date"><i class="far fa-clock text-warning mr-1"></i>{{ news.dateN.format('Y-m-d') }}</a></li>
+                                </ul>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row" style="text-align-last: center;">
+                            <div class="col-12">
+                                <div class="product-body">
+                                    <!--Carousel Wrapper-->
+                                    <div class="carousel-product">
+                                        <div class="slider text-secondary" data-slick="product-body">
+                                            <img src="{{ asset('./uploads/pictureJeux/'~news.image) }}" alt="Game">
+                                        </div>
+
+                                    </div>
+                                    <!--/.Carousel Wrapper-->
+                                    <div id="about" class="about mb-8">
+                                        <h6 class="mb-4 fw-400 ls-1 text-uppercase">L'article:</h6>
+                                        <hr class="border-secondary my-2">
+                                        <div>
+                                            <div>
+                                                <p>{{ news.description }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-6">
+                                        <h6 class="mb-0 fw-400 ls-1 text-uppercase">Donnez Votre avis:</h6>
+                                        <hr class="border-secondary my-2">
+                                    </div>
+                                    <div class="mb-0">
+                                        <div>
+                                            <div>
+                                                <!-- SIU -->
+                                                {% if canAddComment %}
+                                                <div class="container">
+                                                    <div class="row gutters-y">
+                                                        <div class="col-lg-12 text-light">
+                                                            <div class="mb-6">
+                                                                <div class="form-group" style="text-align-last: center;">
+                                                                    {{ form_start(form) }}
+                                                                    {{ form_row(form.description) }}
+                                                                    <div style="margin-top: 1rem;"></div>
+                                                                    {{ form_row(form.Partagez) }}
+                                                                    {{ form_end(form) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% else %}
+                                                    <p class="small d-inline-block py-2 px-4 bg-dark_A-20 text-warning lead-1">Vous avez ajoutez 3 commentaires Vous ne pouvez plus ajoutez</p>
+                                                {% endif %}
+                                                <!-- /SIU -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="review-box content-section text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-8">
+                            <h6 class="mb-4 fw-400 ls-1 text-uppercase">Commentaires:</h6>
+                            <hr class="border-secondary mt-2 mb-6">
+                            <div class="row" style="place-content: center;">
+                                {% for c in comments %}
+                                    <!-- Item -->
+                                    <div class="col-12 mb-7 comment-item">
+                                        <div class="d-flex flex-wrap flex-sm-nowrap">
+                                            <div><img src="{{ asset('./profile/'~c.user.tag~'/'~c.user.PhotoProfil) }}" class="d-none d-sm-block avatar rounded" alt="Avatar"></div>
+                                            <div class="review-item ml-sm-4">
+                                                <div class="small d-flex align-items-start">
+                                                    <!-- user -->
+                                                    <span class="name text-lt badge badge-info fw-600 small-4">{{ c.user.tag}}</span>
+                                                    <!-- /.user -->
+                                                    <!-- time -->
+                                                    <div class="time ml-2">{{ c.date.format('Y-m-d H:i:s') }}</div>
+                                                    <!-- /.time -->
+                                                    <div class="ml-auto">
+                                                        <div class="d-flex small-1">
+                                                            {% if (c.user.id == app.session.get('Gamer_id'))or(c.user.id == app.session.get('Coach_id'))or(c.user.id == app.session.get('Admin_id')) %}
+                                                                <div class="mr-2"><a href="{{ path('news_comment', {'id': c.id}) }} " class="text-info"><i class="fas fa-pencil-alt"></i></a></div>
+                                                            <div class="mr-2"><a href="{{ path('supprimer_commentaire', {'id': c.id}) }}" class="text-info"><i class="fas fa-trash-alt"></i></a></div>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p class="mb-0 small-3">{{ c.description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {% if comments|length > 3 %}
+                                    <div class="load-more-container">
+                                        <button id="load-more-btn" class="btn btn-outline-light">Load More</button>
+                                    </div>
+                                {% endif %}
+
+                                <script>
+                                    const comments = document.querySelectorAll('.comment-item');
+                                    const loadMoreBtn = document.querySelector('#load-more-btn');
+                                    const loadMoreContainer = document.querySelector('.load-more-container');
+                                    const commentsLength = {{ comments|length }};
+                                    const batchSize = 3;
+                                    let currentBatchSize = batchSize;
+
+                                    // Hide the load more button if there are no more comments to load
+                                    if (currentBatchSize >= commentsLength) {
+                                        loadMoreContainer.style.display = 'none';
+                                    }
+
+                                    // Hide all comments beyond the first batch
+                                    for (let i = batchSize; i < commentsLength; i++) {
+                                        comments[i].style.display = 'none';
+                                    }
+
+                                    loadMoreBtn.addEventListener('click', () => {
+                                        for (let i = currentBatchSize; i < currentBatchSize + batchSize; i++) {
+                                            if (comments[i]) {
+                                                comments[i].style.display = 'block';
+                                            } else {
+                                                // If there are no more comments to show, hide the load more button
+                                                loadMoreContainer.style.display = 'none';
+                                                break;
+                                            }
+                                        }
+                                        currentBatchSize += batchSize;
+                                    });
+                                </script>
+
+                                <!-- /.Item -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Content Area -->
+
+    </main>
+
+{% endblock %}

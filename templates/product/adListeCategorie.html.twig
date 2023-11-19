@@ -1,0 +1,50 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %} <center>----------Liste des produits</center> {% endblock %}
+
+{% block body %}
+
+    <div class="ml-10 col-md-12 grid-margin stretch-card">
+        <div >
+            <center>
+                <h1 style="color:#ffffff; font-weight:bold;">Liste des Catégories</h1>
+            </center>
+            <table class="table table-bordered custom-table" style="border: 2px solid rgba(255,255,255,0.53);">
+                <thead>
+                <tr style="color:rgba(128,0,128,0.07); font-weight:bold;">
+                    <th style="color: #ffffff;">ID</strong></th>
+                    <th style="color: #ffffff;">Nom</strong></th>
+                    <th style="color: #ffffff;">Type</strong></th>
+                    <th style="color: #ffffff;">Produits</strong></th>
+                    <th style="color: #ffffff;">Ajouter un Produit</strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for categorie in adcategorie %}
+                    <tr>
+                        <td>{{ categorie.id }}</td>
+                        <td>{{ categorie.nom }}</td>
+                        <td>{{ categorie.type }}</td>
+                        <td>
+                            {% for produit in categorie.produits %}
+                                {{ produit.nom }} <br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="{{ path('ajoutproduit', {'idCategorie': categorie.id}) }}" class="btn btn-inverse-info btn-fw">Ajouter un produit</a>
+                            {% if categorie.type != 'Recharge' %}
+                            <a href="{{ path('supprimercategorie', {'id': categorie.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette categorie ?')" class="btn btn-inverse-danger btn-fw">Supprimer</a>
+                            {% endif %}
+                            <a href="{{ path('modifierCategorie', {'id': categorie.id}) }}"  class="btn btn-inverse-warning btn-fw">Modifier</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('ajoutCategorie') }}" class="btn btn-inverse-info btn-fw" style="width: fit-content;">Ajouter une catégorie</a>
+
+        </div>
+    </div>
+    <br> <br> <br><br> <br> <br>    <br> <br> <br><br> <br> <br>    <br> <br> <br><br> <br> <br>
+{% endblock %}

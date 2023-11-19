@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <form method="post" action="{{ path('app_product') }}">
+        <div class="form-group">
+            <label for="dinarAmount">Montant en dinar :</label>
+            <input type="text" class="form-control" id="dinarAmount" name="dinarAmount">
+        </div>
+        <div class="form-group">
+            <label for="pointAmount">Montant en point :</label>
+            <input type="text" class="form-control" id="pointAmount" name="pointAmount" readonly value="{{ pointAmount ?? '' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Convertir</button>
+    </form>
+{% endblock %}

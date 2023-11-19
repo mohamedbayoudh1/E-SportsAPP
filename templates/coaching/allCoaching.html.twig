@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AllCourses{% endblock %}
+
+
+
+{% block body %}
+
+
+<main class="main-content">
+    <link rel='stylesheet' id='overworld-edge-modules-css' href="{{ asset('wp-content/themes/overworld/assets/css/modules.min1eb7.css?ver=6.0.3') }}" type='text/css' media='all' />
+
+    <!-- Start Content Area -->
+    <section class="content-section top_sellers carousel-spotlight ig-carousel pt-8 text-light">
+        <center>
+            <div>
+                {% for j in jeux %}
+                <a href="{{path('app_coaching',{'idGame':j.id})}}" type="submit" class="ml-7 mb-7 edgtf-btn edgtf-btn-outline">{{ j.nomGame }}</a>
+                {% endfor %}
+            </div>
+        </center>
+        <div class="container">
+
+            <form id="summoner-form" action="{{ path('summoner', {'name': app.request.query.get('name', '')|url_encode})|replace({'%20': '-'}) }}" method="get">
+                <label for="name">Search Summoner:</label>
+                <input type="text" name="name" id="name" value="{{ app.request.query.get('name', '') }}" required>
+                <button type="submit" class="edgtf-btn edgtf-btn-outline">Search</button>
+            </form>
+    
+
+            <header class="header">
+                <h2>All Courses</h2>
+            </header>
+            <div class="position-relative">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <!-- nav tabs -->
+
+                        <!-- tab panes -->
+                        <div id="color_sel_Carousel-content_02" class="tab-content position-relative w-100">
+                            <!-- tab item -->
+                            <div class="tab-pane fade active show" id="mp-2-01-c" role="tabpanel" aria-labelledby="mp-2-01-tab">
+                                <div class="row">
+
+                                    <!-- BOUCLE FOR LENNA -->
+                                    {% for c in courses %}
+                                        {% if c.etat == 1 %}
+                                    <!-- item -->
+                                    <div style="" class="col-5 mr-9 ml-2 mb-8 ">
+
+                                        <a href="{{ path('oneCourse', {'id': c.id}) }}" class="product-item">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="item_img d-none d-sm-block">
+                                                    <img class="img bl-3 text-primary" src="{{asset('uploads/pictureCourses/'~c.image)}}" alt="Games Store">
+                                                </div>
+                                                <div class="item_content flex-1 flex-grow pl-0 pl-sm-6 pr-6">
+                                                    <h6 class="item_title ls-1 small-1 fw-600 text-uppercase mb-1">{{ c.titre }}</h6>
+
+                                                    <div class="position-relative">
+                                <a href="{{ path('CoachCourses', {'id': c.getIdCoach.id, 'etat': 1}) }}" >coach : {{ c.getIdCoach.getNom }}</a>
+                                                    </div>
+                                                </div>
+                                                <div class="item_discount d-none">
+                                                    <div class="row align-items-center h-100 no-gutters">
+                                                        <div class="text-right text-secondary px-6">
+                                                            <span class="fw-600 btn bg-warning">-10%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Price -->
+                                                <div class="item_price">
+                                                    <div class="row align-items-center h-100 no-gutters">
+                                                        <div class="text-right">
+
+                                                            {% if c.prix>0 %}
+                                                            <div class="price-current">Prix  : {{ c.prix }}  <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 25px; height: 25px; margin-bottom: 3px"></div>
+
+                                                            {% else %}
+                                                                <span class="fw-600">free</span>
+                                                            {% endif %}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        <!-- pagination -->
+                        <nav class="mt-4 pt-4 border-top border-secondary" aria-label="Page navigation">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span class="ti-angle-left small-7" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span class="ti-angle-right small-7" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /.pagination -->
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+    <!-- /.End Content Area -->
+
+</main>
+{% endblock %}

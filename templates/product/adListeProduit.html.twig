@@ -1,0 +1,64 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %} <center>----------Liste des produits</center> {% endblock %}
+
+{% block body %}
+
+    <div class="ml-10 col-md-12 grid-margin stretch-card">
+    <div >
+        <center>
+    <h1 >Liste des produits</h1>
+        </center>
+        <table class="table table-bordered custom-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Qunatité</th>
+
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produit in adproduit %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td><a href="#" onclick="afficherImage('{{ asset('imageProduits/'~produit.image) }}')">{{ produit.nom }}</a></td>
+                <td style="white-space: pre-wrap;">{{ produit.description }}</td>
+                <td>{{ produit.prix }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></td>
+                <td>{{ produit.quantite }} </td>
+                <td>
+                    <a href="{{ path('modifierProduit', {'id': produit.id}) }}"  class="btn btn-inverse-warning btn-fw">Modifier</a>
+                    <a href="{{ path('supprimerproduit', {'id': produit.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')" class="btn btn-inverse-danger btn-fw">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        <!-- Code pour le modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img id="imageModal" src="" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function afficherImage(urlImage) {
+                document.getElementById("imageModal").src = urlImage;
+                $("#myModal").modal("show");
+            }
+        </script>
+        </tbody>
+    </table>
+
+
+
+    </div>
+    </div>
+{% endblock %}

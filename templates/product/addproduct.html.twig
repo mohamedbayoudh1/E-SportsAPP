@@ -1,0 +1,66 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+
+
+    {{ form_start(form, {'attr': {'novalidate': true}}) }}
+
+    <div class="row">
+
+
+
+    
+    <div class="card">
+        <div class="card-body" style=" width: 200% ;position: center">
+            <h4 class="card-title">AJOUTER UN PRODUIT</h4>
+
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputUsername1">ID CATÉGORIE</label>
+                    {{ form_widget(form.idCategorie, {'attr': {'class': 'form-control', 'style': 'color:white;', 'placeholder': 'SAISIR ID DU CATÉGORIE'}, 'value': id}) }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">NOM</label>
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control','style':'color:white;', 'placeholder': 'SAISIR LE NOM DU PRODUIT'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.nom) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">PRIX</label>
+                    {{ form_widget(form.prix, {'attr': {'class': 'form-control','style':'color:white;', 'placeholder': 'SAISIR LE PRIX DU PRODUIT'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.prix) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">QUANTITE</label>
+                    {{ form_widget(form.quantite, {'attr': {'class': 'form-control','style':'color:white;', 'placeholder': 'SAISIR LA QUANTITE DE PRODUIT'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.quantite) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">DESCRIPTION</label>
+                    {{ form_widget(form.description, {'attr': {'class': 'form-control','style':'color:white;', 'placeholder': 'SAISIR UNE DESCRIPTION POUR LE PRODUIT'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">UPLOAD IMAGE</label>
+                    {{ form_widget(form.imagep, {'attr': {'class': 'form-control','style':'color:white;', 'placeholder': 'UPLOAD IMAGE'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.imagep) }}
+                    </div>
+                </div>
+
+                <button  type="submit" class="btn btn-primary me-2" >AJOUTER Produit</button>
+
+        </div>
+
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,302 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title " >Demande Coach</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="form-check form-check-muted m-0">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                      </label>
+                    </div>
+                  </th>
+                  <th> Nom </th>
+                  <th> Email </th>
+                  <th> Point Utilisé</th>
+                  <th> Payment Mode </th>
+                  <th> Date Creation </th>
+                  <th> Cv </th>
+                  <th> compte </th>
+                  <th> Email </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in demande %}
+                <tr>
+                  <td>
+                    
+                    <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                            
+                        <i class="mdi mdi-settings text-light"></i> 
+                   
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" >
+                    
+                    
+                    <a class="dropdown-item preview-item" href="{{ path('demandercoach',{'id':user.id}) }}" >
+                        
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1"> &nbsp;&nbsp;&nbsp;<i class="mdi mdi-account-plus text-success"></i>&nbsp;&nbsp; Confirmer</p>
+                        </div>
+                    </a>  
+                    
+                    <a class="dropdown-item preview-item" href="{{ path('bannircoach',{'id':user.id}) }}" >
+                        
+                        <div class="preview-item-content" >
+                            <p class="preview-subject mb-1"> &nbsp;&nbsp;&nbsp;<i class="mdi mdi-account-remove text-danger"></i>&nbsp;&nbsp; Bannir</p>
+                        </div>
+                    </a>  
+                   
+                    
+                   
+                </div>
+                  </td>
+                  <td>
+                    <img src="{{ asset('./profile/' ~ user.nom ~ user.prenom ~ '/' ~ user.getPhotoProfil()) }}" alt="image" />
+                    <span class="ps-2">{{ user.nom }} {{ user.prenom }}</span>
+                  </td>
+                  <td> {{ user.email }} </td>
+                  <td> 14,500 </td>
+                  <td> Credit card </td>
+                  <td> {{user.datecreation|date('Y-m-d')}} </td>
+                  <td>
+                    
+                        <a href="{{ asset('./profile/' ~ user.nom ~ user.prenom ~ '/' ~ user.getCv()) }}" target="_blank">
+                            <img style="border-radius: 0;" src="drag_and_drop/uploadpdf.png" alt="image" />
+                     
+                      </a>
+                    
+                  </td>
+                  <td>
+                    
+                    <div class="badge badge-outline-warning">Non Traiter</div>
+                   
+                     
+                  
+                  <td>
+                    {% if user.validemail %}
+                    <div class="badge badge-outline-success">Verifier</div>
+                      {% else %}
+                      <div class="badge badge-outline-warning">Non Verifier</div>
+                    {% endif %}
+                  </td>
+                  
+                  </td>
+                </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Coach</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="form-check form-check-muted m-0">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                      </label>
+                    </div>
+                  </th>
+                  <th> Nom </th>
+                  <th> Email </th>
+                  <th> Point Utilisé</th>
+                  <th> Payment Mode </th>
+                  <th> Date Creation </th>
+                  <th> Statut </th>
+                  <th> compte </th>
+                  <th> Email </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in coach %}
+                <tr>
+                  <td>
+                    
+                    <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                            
+                        <i class="mdi mdi-settings text-light"></i> 
+                   
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" >
+                    {% if not user.bannir %}
+                    <a class="dropdown-item preview-item" href="{{ path('bannircoach',{'id':user.id}) }}" >
+                        
+                        <div class="preview-item-content" >
+                            <p class="preview-subject mb-1"> &nbsp;&nbsp;&nbsp;<i class="mdi mdi-account-remove text-danger"></i>&nbsp;&nbsp; Bannir</p>
+                        </div>
+                    </a>  
+                    {% endif %}
+                    {% if  user.bannir %}
+                    <a class="dropdown-item preview-item" href="{{ path('bannircoach',{'id':user.id}) }}" >
+                        
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1"> &nbsp;&nbsp;&nbsp;<i class="mdi mdi-account-plus text-success"></i>&nbsp;&nbsp; Active</p>
+                        </div>
+                    </a>  
+                    {% endif %}
+                   
+                </div>
+                  </td>
+                  <td>
+                    <img src="{{ asset('./profile/' ~ user.nom ~ user.prenom ~ '/' ~ user.getPhotoProfil()) }}" alt="image" />
+                    <span class="ps-2">{{ user.nom }} {{ user.prenom }}</span>
+                  </td>
+                  <td> {{ user.email }} </td>
+                  <td> 14,500 </td>
+                  <td> Credit card </td>
+                  <td> {{user.datecreation|date('Y-m-d')}} </td>
+                  <td>
+                    {% if not user.status %}
+                    <div class="badge badge-outline-light">Hors ligne</div>
+                    {% endif %}
+                    {% if  user.status  %}
+                    <div class="badge badge-outline-success">En ligne</div>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if not user.bannir %}
+                    <div class="badge badge-outline-success">Active</div>
+                    {% endif %}
+                    {% if  user.bannir  %}
+                    <div class="badge badge-outline-danger">Bannis</div>
+                    {% endif %}
+                     
+                  
+                  </td>
+                  <td>
+                    {% if user.validemail %}
+                    <div class="badge badge-outline-success">Verifier</div>
+                      {% else %}
+                      <div class="badge badge-outline-warning">Non Verifier</div>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Coach Bannis</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="form-check form-check-muted m-0">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                      </label>
+                    </div>
+                  </th>
+                  <th> Nom </th>
+                  <th> Email </th>
+                  <th> Point Utilisé</th>
+                  <th> Payment Mode </th>
+                  <th> Date Creation </th>
+                  <th> Statut </th>
+                  <th> compte </th>
+                  <th> Email </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in banned %}
+                <tr>
+                  <td>
+                    
+                    <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                            
+                        <i class="mdi mdi-settings text-light"></i> 
+                   
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" >
+                    {% if not user.bannir %}
+                    <a class="dropdown-item preview-item" href="{{ path('bannircoach',{'id':user.id}) }}" >
+                        
+                        <div class="preview-item-content" >
+                            <p class="preview-subject mb-1"> &nbsp;&nbsp;&nbsp;<i class="mdi mdi-account-remove text-danger"></i>&nbsp;&nbsp; Bannir</p>
+                        </div>
+                    </a>  
+                    {% endif %}
+                    {% if  user.bannir %}
+                    <a class="dropdown-item preview-item" href="{{ path('bannircoach',{'id':user.id}) }}" >
+                        
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1"> &nbsp;&nbsp;&nbsp;<i class="mdi mdi-account-plus text-success"></i>&nbsp;&nbsp; Active</p>
+                        </div>
+                    </a>  
+                    {% endif %}
+                   
+                </div>
+                  </td>
+                  <td>
+                    <img src="{{ asset('./profile/' ~ user.nom ~ user.prenom ~ '/' ~ user.getPhotoProfil()) }}" alt="image" />
+                    <span class="ps-2">{{ user.nom }} {{ user.prenom }}</span>
+                  </td>
+                  <td> {{ user.email }} </td>
+                  <td> 14,500 </td>
+                  <td> Credit card </td>
+                  <td> {{user.datecreation|date('Y-m-d')}} </td>
+                  <td>
+                    {% if not user.status %}
+                    <div class="badge badge-outline-light">Hors ligne</div>
+                    {% endif %}
+                    {% if  user.status  %}
+                    <div class="badge badge-outline-success">En ligne</div>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if not user.bannir %}
+                    <div class="badge badge-outline-success">Active</div>
+                    {% endif %}
+                    {% if  user.bannir  %}
+                    <div class="badge badge-outline-danger">Bannis</div>
+                    {% endif %}
+                     
+                  
+                  </td>
+                  <td>
+                    {% if user.validemail %}
+                    <div class="badge badge-outline-success">Verifier</div>
+                      {% else %}
+                      <div class="badge badge-outline-warning">Non Verifier</div>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

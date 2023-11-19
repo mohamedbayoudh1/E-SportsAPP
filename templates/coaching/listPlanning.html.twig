@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    #myModal {
+        background-color: rgba(0, 0, 0, 0.5);
+        /* semi-transparent background */
+    }
+
+    .modal-body {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #lienMeet {
+        display: block;
+        font-size: 24px;
+        color: blue;
+        text-decoration: underline;
+        margin-bottom: 20px;
+    }
+
+    .modal-dialog {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        color: white;
+    }
+</style>
+<center>
+
+    <div class="col-10">
+
+        {% if app.session.get('Gamer_id') %}
+        <center>
+            <h1>waiting list planning</h1>
+        </center>
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>Nbre Heures</th>
+                    <th>Gamer name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planning in gamerPlannings %}
+                {% if planning.etat == 0 %}
+                <tr>
+                    <td>{{ planning.date|date('d/m/Y H:i') }}</td>
+                    <td>{{ planning.nbreHeureSeance }} hour(s)</td>
+                    <td>{{ planning.idGamer.nom }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            <h1>axepted list gamerPlannings</h1>
+        </center>
+
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>Nbre Heures</th>
+                    <th>Gamer name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planning in gamerPlannings %}
+                {% if planning.etat == 1 %}
+                <tr>
+                    <td>{{ planning.date|date('d/m/Y H:i') }}</td>
+                    <td>{{ planning.nbreHeureSeance }} hour(s)</td>
+                    <td>{{ planning.idGamer.nom }}</td>
+                    <td>
+                        <a onclick="afficherLienMeet('{{planning.urlMeet}}')" class="btn btn-warning btn-fw">consulter
+                            urlMeet</a>
+                    </td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            <h1>declined list planning</h1>
+        </center>
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>Nbre Heures</th>
+                    <th>Gamer name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planning in gamerPlannings %}
+                {% if planning.etat == -1 %}
+
+                <tr>
+                    <td>{{ planning.date|date('d/m/Y H:i') }}</td>
+                    <td>{{ planning.nbreHeureSeance }} hour(s)</td>
+                    <td>{{ planning.idGamer.nom }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+
+
+
+        {% if app.session.get('Coach_id') %}
+        <center>
+            <h1>waiting list planning</h1>
+        </center>
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>Nbre Heures</th>
+                    <th>Gamer name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planning in plannings %}
+                {% if planning.etat == 0 %}
+                <tr>
+                    <td>{{ planning.date|date('d/m/Y H:i') }}</td>
+                    <td>{{ planning.nbreHeureSeance }} hour(s)</td>
+                    <td>{{ planning.idGamer.nom }}</td>
+                    <td>
+                        <a href="{{ path('axeptPlanning', {'id': planning.id}) }}"
+                            class="btn btn-info btn-fw">Accepter</a>
+                        <a href="{{ path('declinePlanning', {'id': planning.id}) }}"
+                            class="btn btn-danger btn-fw">refuser</a>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            <h1>axepted list planning</h1>
+        </center>
+
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>Nbre Heures</th>
+                    <th>Gamer name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planning in plannings %}
+                {% if planning.etat == 1 %}
+                <tr>
+                    <td>{{ planning.date|date('d/m/Y H:i') }}</td>
+                    <td>{{ planning.nbreHeureSeance }} hour(s)</td>
+                    <td>{{ planning.idGamer.nom }}</td>
+                    <td>
+                        <a onclick="afficherLienMeet('{{planning.urlMeet}}')" class="btn btn-warning btn-fw">consulter
+                            urlMeet</a>
+                    </td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            <h1>declined list planning</h1>
+        </center>
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>Nbre Heures</th>
+                    <th>Gamer name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planning in plannings %}
+                {% if planning.etat == -1 %}
+
+                <tr>
+                    <td>{{ planning.date|date('d/m/Y H:i') }}</td>
+                    <td>{{ planning.nbreHeureSeance }} hour(s)</td>
+                    <td>{{ planning.idGamer.nom }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body" style="height: 450px;">
+                        <a style="color: black" target="_blank" id="lienMeet" href="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</center>
+
+
+<script>
+    function afficherLienMeet(meetUrl) {
+        var meet = document.getElementById("lienMeet");
+        meet.setAttribute("href", meetUrl);
+        meet.innerText = meetUrl;
+        $("#myModal").modal("show");
+    }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,400 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <style>
+        /*
+ *  Flex Layout Specifics
+*/
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .round{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            width:200px;
+            list-style:none;
+            padding:0;
+        }
+        .round .spacer{ flex-grow:1; }
+        .round .spacer:first-child,
+        .round .spacer:last-child{ flex-grow:.5; }
+
+        .round .game-spacer{
+            flex-grow:1;
+        }
+
+        /*
+         *  General Styles
+        */
+        body{
+            font-family:sans-serif;
+            font-size:small;
+            padding:10px;
+            line-height:1.4em;
+        }
+
+        li.game{
+            padding-left:20px;
+        }
+
+        li.game.winner{
+            font-weight:bold;
+        }
+        li.game span{
+            float:right;
+            margin-right:5px;
+        }
+
+        li.game-top{ border-bottom:1px solid #aaa; }
+
+        li.game-spacer{
+            border-right:1px solid #aaa;
+            min-height:40px;
+        }
+
+        li.game-bottom{
+            border-top:1px solid #aaa;
+        }
+        .gold {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            animation: gold-anim 0.5s ease-out forwards;
+        }
+
+        .pig {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            animation: pig-anim 0.5s ease-out forwards;
+        }
+
+        @keyframes gold-anim {
+            0% { transform: translate(0, -20px); opacity: 0; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+
+        @keyframes pig-anim {
+            0% { transform: translate(0, 20px); opacity: 0; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+        .victory-link {
+            display: inline-block;
+            padding: 10px;
+            background-color: gold;
+            color: black;
+            text-decoration: none;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .victory-link:hover {
+            transform: scale(1.1);
+        }
+
+        .victory-link:active {
+            animation-name: piggy;
+            animation-duration: 0.5s;
+        }
+
+        @keyframes piggy {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, -20px);
+            }
+            100% {
+                transform: translate(40px, 0);
+            }
+        }
+
+    </style>
+
+
+
+
+<center>
+
+    <h1 style="color:white">  Tournament </h1>
+    <main id="tournament">
+
+        {% set gamer_id = app.session.get('Gamer_id')|number_format %}
+
+
+    <table style="border-collapse: separate;
+        border-spacing: 20px 10px;  border: none;">
+
+        <tr>
+            <td style=" padding: 10px;
+              text-align: left;">{% if classements1[0] is defined and classements1[1] is defined %} {{ classements1[0].idteam.getNomTeam }}
+                    {% if classements1[1].etat==0 and classements1[0].etat==0 %}
+                        {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                            <button class="win-button" onclick="incrementScore('{{ classements1[0].id }}')">Win</button>
+
+                        {% endif %}
+                        {% if classements1[0].idteam.getOwnerteam.id ==gamer_id%}
+
+                            <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[0].idteam.getNomTeam }}')">send</button>
+                            <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+            </td>
+            <td style=" padding: 10px;
+              text-align: left;" rowspan="2"><br><br><br>
+                {% if classements1[0] is defined and classements1[0].etat>=1 %} {{ classements1[0].idteam.getNomTeam }}
+                {% if classements1[0].etat==1 and (classements1[2].etat==1  or classements1[3].etat==1 )%}
+                    {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                        <button class="win-button" onclick="incrementScore('{{ classements1[0].id }}')">Win</button>
+
+                    {% endif %}
+                    {% if classements1[0].idteam.getOwnerteam.id ==gamer_id%}
+
+                        <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[0].idteam.getNomTeam }}')">send</button>
+                        <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+
+                    {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if classements1[1] is defined and classements1[1].etat>=1 %} {{ classements1[1].idteam.getNomTeam }}
+                {% if classements1[1].etat==1 and (classements1[2].etat==1  or classements1[3].etat==1 ) %}
+                    {% if classements1[1].idTournois.ownertournoi.id == gamer_id %}
+                        <button class="win-button" onclick="incrementScore('{{ classements1[1].id }}')">Win</button>
+
+                    {% endif %}
+                    {% if classements1[1].idteam.getOwnerteam.id ==gamer_id%}
+
+                        <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[0].idteam.getNomTeam }}')">send</button>
+                        <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+
+                    {% endif %}
+                    {% endif %}
+
+                {% endif %}</td>
+            <td style=" padding: 10px;
+              text-align: left;"></td>
+        </tr>
+        <tr>
+            <td style=" padding: 10px;
+              text-align: left;"> {% if classements1[1] is defined %} {{ classements1[1].idteam.getNomTeam }}
+                {% if classements1[1].etat==0 and classements1[0].etat==0 %}
+                    {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                        <button class="win-button" onclick="incrementScore('{{ classements1[1].id }}')">Win</button>
+                    {% endif %}
+                    {% if classements1[1].idteam.getOwnerteam.id ==gamer_id%}
+
+                        <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[1].idteam.getNomTeam }}')">send</button>
+                        <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+                    {% endif %}
+                {% endif %}
+                {% endif %}
+
+            </td>
+            <td style=" padding: 10px;
+              text-align: left;"> {% for item in classements1 %} {% if item.etat==2 %} <br><br> {{ item.idteam.getNomTeam }}{% endif %} {% endfor %}</td>
+        </tr>
+        <tr>
+            <td style=" padding: 10px;
+              text-align: left;">{% if classements1[2] is defined and classements1[3] is defined %} {{ classements1[2].idteam.getNomTeam }}
+                    {% if classements1[2].etat==0 and classements1[3].etat==0 %}
+                        {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                            <button class="win-button" onclick="incrementScore('{{ classements1[2].id }}')">Win</button>
+
+                        {% endif %}
+                        {% if classements1[2].idteam.getOwnerteam.id ==gamer_id%}
+
+                            <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[2].idteam.getNomTeam }}')">send</button>
+                            <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endif %}</td>
+            <td style=" padding: 10px;
+              text-align: left;" colspan="2"> {% if classements1[2] is defined and classements1[2].etat>=1 %}  {{ classements1[2].idteam.getNomTeam }}
+
+                {% if classements1[2].etat==1 and (classements1[1].etat==1  or classements1[0].etat==1 ) %}
+                        {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                            <button class="win-button" onclick="incrementScore('{{ classements1[2].id }}')">Win</button>
+
+                        {% endif %}
+                        {% if classements1[2].idteam.getOwnerteam.id ==gamer_id%}
+
+                            <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[2].idteam.getNomTeam }}')">send</button>
+                            <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+
+                        {% endif %}
+                    {% endif %}
+
+                {% endif %}
+                 
+                {% if classements1[3] is defined and classements1[3].etat>=1 %} {{ classements1[3].idteam.getNomTeam }}
+                {% if classements1[3].etat==1 and (classements1[1].etat==1  or classements1[0].etat==1 ) %}
+                    {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                        <button class="win-button" onclick="incrementScore('{{ classements1[3].id }}')">Win</button>
+
+                    {% endif %}
+                    {% if classements1[3].idteam.getOwnerteam.id ==gamer_id%}
+
+                        <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[3].idteam.getNomTeam }}')">send</button>
+                        <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+                    {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+
+
+
+
+            </td>
+        </tr>
+        <tr>
+            <td style=" padding: 10px;
+              text-align: left;">{% if classements1[3] is defined %} {{ classements1[3].idteam.getNomTeam }}
+                    {% if classements1[2].etat==0 and classements1[3].etat==0 %}
+                        {% if classements1[0].idTournois.ownertournoi.id == gamer_id %}
+                            <button class="win-button" onclick="incrementScore('{{ classements1[3].id }}')">Win</button>
+
+                        {% endif %}
+                        {% if classements1[3].idteam.getOwnerteam.id ==gamer_id%}
+
+                            <button  onclick="sendScore('{{ classements1[0].idTournois.ownertournoi.id }}', $('#score-input').val(), '{{ classements1[3].idteam.getNomTeam }}')">send</button>
+                            <input id="score-input" type="number" placeholder="Enter score" style="width: 100px; height: 24px; padding: 4px;">
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+
+            </td>
+            <td style=" padding: 10px;
+              text-align: left;"></td>
+            <td style=" padding: 10px;
+              text-align: left;"></td>
+        </tr>
+    </table>
+    </main>
+
+    <center><h1 style="color:white">Classement</h1></center>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Team</th>
+            <th>Score</th>
+
+        </tr>
+        </thead>
+        {% for classement2 in classements1|sort((a, b) => b.score <=> a.score) %}
+            <tr>
+                <td>{{ classement2.idTeam.nomteam }}</td>
+                <td>{{ classement2.score }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <!-- HTML code -->
+    <table id="data-table" style="display:none;">
+        <thead>
+        <tr>
+            <th>Team Name</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for classement2 in classements1 %}
+            <tr>
+                <td>{{ classement2.idTeam.nomteam }}</td>
+                <td>{{ classement2.score }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <center>
+        <a class="btn btn-primary" href="{{ path('export_excel') }}">Export to Excel</a>
+    </center>
+
+    <script>
+        function incrementScore(classementId) {
+            // make an AJAX request to update the score
+            $.ajax({
+                url: '{{ path('increment_score') }}',
+                method: 'POST',
+                data: { id: classementId },
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        }
+
+        function decrementScore(classementId) {
+            // make an AJAX request to update the score
+            $.ajax({
+                url: '{{ path('decrement_score') }}',
+                method: 'POST',
+                data: { id: classementId },
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        }
+        function sendScore(tournoiId, score, teamName) {
+            $.ajax({
+                type: 'POST',
+                url: '/send-notification/' + tournoiId,
+                data: {
+                    score: score,
+                    team_name: teamName,
+                },
+                success: function(response) {
+                    alert(response.message);
+                    // do something else on success if needed
+                },
+                error: function(xhr, status, error) {
+                    alert(xhr.responseText);
+                    // handle errors if needed
+                }
+            });
+        }
+
+
+
+
+
+
+
+    </script>
+
+  {#  <head>
+        <meta charset="UTF-8">
+        <title>Chart Example</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+    <canvas id="myChart"></canvas>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chartData = JSON.parse('{{ chartData|raw }}');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+        });
+    </script>
+    </body>#}
+{% endblock %}

@@ -1,0 +1,43 @@
+<center>
+    <h1 style="color: white">MES ACHATS</h1>
+</center>
+<br> <br> <br> <br> <br>
+
+
+<h3 style="color: white"> Nom & Prenom : {{ tag }} </h3>
+
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nom Produit</th>
+        <th>Référence</th>
+        <th>Prix</th>
+        <th>Date d'achat</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for a in historiqueAchat %}
+        <tr>
+            <td>{{ a.Idproduit.nom }}</td>
+            <td>{{  a.reference }}</td>
+            <td>{{ a.Idproduit.prix }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"></td>
+            <td>{{ a.datedachat|date('d/m/Y ') }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br><br><br><br>
+<center>
+    <div style="background-color: #F44336; padding: 10px; max-width: fit-content;">
+        <div style="max-width: 600px; margin: 0 auto; ">
+
+            <h5 style="color: white; margin: 0;"> Prix total en SIU: {{ prixtotal }} <img src="{{ asset('back_office/kamell.png') }}" alt="coin" style="width: 16px; height: 16px;"> </h5>
+            <h5 style="color: white; margin: 0;"> Prix total en Dinar: {{ prixtotaldnt }} DNT </h5>
+
+        </div>
+    </div>
+

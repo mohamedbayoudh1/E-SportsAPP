@@ -1,0 +1,32 @@
+{% if news is not empty %}
+    {% for n in news %}
+        <!-- item -->
+        <div class="news-item col-12 mb-4">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="card">
+                        <div>
+                            <img src="{{ asset('./uploads/pictureJeux/'~n.image) }}" alt="News">
+                            <div class="badges badges-left badges-top pl-2 pt-1 text-white">
+                                <a class="badge badge-warning text-secondary fw-600" href="#">Actualité</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="text-gray">
+                        <h5 class="text-uppercase fw-600"><a href="/news/{{ n.id }}">{{ n.titre }}</a></h5>
+                        <div class="small-3 mb-2">
+                            <span class="mr-2"><i class="fas fa-calendar-alt mr-1"></i>{{ n.dateN|date('Y-m-d') }}</span>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.item -->
+    {% endfor %}
+    {{ knp_pagination_render(news, 'pagination.html.twig') }}
+{% else %}
+    <p>Pas de news trouver.</p>
+{% endif %}

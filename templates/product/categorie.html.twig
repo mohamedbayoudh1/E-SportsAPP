@@ -1,0 +1,48 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+
+<div class="content-wrapper">
+    {{ form_start(form) }}
+    <div class="row">
+
+
+
+    <div class="ml-10 col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body"  style=" width: 100% ; height: 200% ;position : center">
+            <h4 class="card-title">AJOUTER UNE CATEGORIE</h4>
+
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputUsername1">TYPE</label>
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control', 'style': 'color:white;', 'placeholder': 'SAISIR LE TYPE DU CATÉGORIE'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.type) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">NOM</label>
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'style': 'color:white;', 'placeholder': 'SAISIR LE NOM DU CATEGORIE'}}) }}
+                    <div style="background-color: transparent;color: red" class="alert-danger">
+                        {{ form_errors(form.nom) }}
+                    </div>
+
+
+                    {% for type, messages in app.flashes() %}
+                        <div class="alert alert-{{ type }}">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-inverse-info btn-fw">AJOUTER CATEGORIE</button>
+
+        </div>
+    </div>
+
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

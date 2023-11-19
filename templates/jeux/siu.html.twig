@@ -1,0 +1,11 @@
+
+<div>
+    <span class="hr-text small my-6">Voulez vous ajoutez votre avis?</span>
+    <div class="text-center my-6">
+        {{ form_start(form) }}
+        {{ form_label(form.rating) }}
+        {{ form_widget(form.rating) }}
+        {{ form_errors(form.rating) }}
+        {{ form_end(form) }}
+    </div>
+</div>
