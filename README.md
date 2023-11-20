@@ -1,7 +1,7 @@
 # e-SportsAPP
  E-sports WEB APP ''Symfony5''
   
-Notre objectif principal était de concevoir une application web dédiée aux 
+MON objectif principal était de concevoir une application web dédiée aux 
 sports électroniques qui non seulement répondrait aux exigences avancées 
 de l'industrie, mais qui serait également séduisante, conviviale et dotée d'une 
 gamme complète d'outils et de fonctionnalités pour satisfaire aussi bien les 
