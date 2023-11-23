@@ -29,7 +29,7 @@ utilisateur de premier ordre tout en exploitant les avantages bien établis de
 ce framework, qui jouit d'une notoriété significative dans l'industrie pour son 
 efficacité dans la création de produits performants
 
-![App Screenshot](./images/app_screenshot1.png)
+![App Screenshot](./ESPORTS CAPTURE/ACCUEIL.png)
 ![App Screenshot](./images/app_screenshot2.png)
 ![App Screenshot](./images/app_screenshot3.png)
 ![App Screenshot](./images/app_screenshot4.png)
