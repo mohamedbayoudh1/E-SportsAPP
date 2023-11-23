@@ -1,35 +1,26 @@
-# e-SportsAPP
+#E-SportsAPP
  E-sports WEB APP ''Symfony5''
-  
-MON objectif principal était de concevoir une application web dédiée aux 
-sports électroniques qui non seulement répondrait aux exigences avancées 
-de l'industrie, mais qui serait également séduisante, conviviale et dotée d'une 
-gamme complète d'outils et de fonctionnalités pour satisfaire aussi bien les 
-administrateurs que les utilisateurs finaux. C'est dans cette optique que nous 
-avons fait le choix de Symfony.
-Symfony, en tant que framework PHP, présente des avantages substantiels 
-pour le développement de notre application esports. Les produits créés avec 
-Symfony bénéficient d'une adaptabilité remarquable aux évolutions des 
-besoins, grâce à une approche de développement serveur/client/mobile 
-unifiée, propice à une productivité exceptionnelle. De plus, Symfony offre des 
-modèles de flux de travail qui simplifient la collaboration au sein de l'équipe, 
-un code d'interface utilisateur clair et maintenable, ainsi que d'autres 
-avantages essentiels.
-Des entreprises de renommée mondiale, telles que Spotify, BlaBlaCar, et 
-Dailymotion, ont opté pour Symfony pour créer des solutions robustes et 
-performantes. Cette adoption témoigne de la puissance et des avantages de 
-Symfony, tels qu'un flux de travail de développement mature et 
-compréhensible, une flexibilité et une compatibilité inégalées, une 
-réutilisation aisée de composants, la disponibilité de modules prêts à 
-l'emploi, ainsi que des performances élevées.
-En récapitulant, nous avons opté pour Symfony dans le développement de 
-notre application esports afin de concrétiser notre aspiration à concevoir une 
-solution sophistiquée et séduisante. Celle-ci vise à fournir une expérience 
-utilisateur de premier ordre tout en exploitant les avantages bien établis de 
-ce framework, qui jouit d'une notoriété significative dans l'industrie pour son 
-efficacité dans la création de produits performants
+ 
+The E-sports Platform By Mohamed bayoudh !
+Game globally with Mohamed Bayoudh's ESports platform – your ultimate online arena for competitive gaming and worldwide tournaments. Immerse yourself in thrilling matches while seizing the opportunity to earn real money through seamless streaming. Additionally, leverage our platform to showcase and sell your exclusive products, including stylish merchandise like shirts. Join us in revolutionizing gaming, where passion meets profit, and excellence is not only recognized but rewarded. Elevate your gaming experience, amplify your brand, and turn your skills into success!
 
+
+MY main objective was to design a web application dedicated to esports that not only meets the advanced requirements of the industry but is also attractive, user-friendly, and equipped with a comprehensive range of tools and features to satisfy both administrators and end users. It is with this goal in mind that I chose Symfony.
+
+Symfony, as a PHP framework, offers substantial advantages for the development of MY esports application. Products created with Symfony benefit from remarkable adaptability to evolving needs, thanks to a unified server/client/mobile development approach that promotes exceptional productivity. Additionally, Symfony provides workflow models that simplify collaboration within MY team, clear and maintainable user interface code, and other essential advantages.
+
+World-renowned companies such as Spotify, BlaBlaCar, and Dailymotion have chosen Symfony to create robust and high-performance solutions. This adoption attests to the power and benefits of Symfony, including a mature and understandable development workflow, unparalleled flexibility and compatibility, easy reuse of components, the availability of ready-to-use modules, and high performance.
+
+In summary, I chose Symfony for the development of MY esports application to realize MY ambition of designing a sophisticated and attractive solution. This aims to provide a top-notch user experience while leveraging the well-established advantages of this framework, which enjoys significant recognition in the industry for its efficiency in creating high-performing products.
+
+Home of E-sports APP:
 ![App Screenshot](./capture/ACCUEIL.png)
-![App Screenshot](./images/app_screenshot2.png)
-![App Screenshot](./images/app_screenshot3.png)
-![App Screenshot](./images/app_screenshot4.png)
+
+Registration for E-sports APP:
+![App Screenshot](./images/INSCRIPTION.png)
+
+Login for E-sports APP:
+![App Screenshot](./images/LOGIN.png)
+
+About E-sports APP:
+![App Screenshot](./images/about.png)
