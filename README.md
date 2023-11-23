@@ -17,10 +17,10 @@ Home of E-sports APP:
 ![App Screenshot](./capture/ACCUEIL.png)
 
 Registration for E-sports APP:
-![App Screenshot](./images/INSCRIPTION.png)
+![App Screenshot](./capture/INSCRIPTION.png)
 
 Login for E-sports APP:
-![App Screenshot](./images/LOGIN.png)
+![App Screenshot](./capture/LOGIN.png)
 
 About E-sports APP:
-![App Screenshot](./images/about.png)
+![App Screenshot](./capture/about.png)
