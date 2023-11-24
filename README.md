@@ -11,12 +11,18 @@ MY main objective was to design a web application dedicated to esports that not 
 
 Home of E-sports APP:
 ![App Screenshot](./capture/ACCUEIL.png)
+![App Screenshot](./capture/userdach.png)
 
 Registration for E-sports APP:
 ![App Screenshot](./capture/INSCRIPTION.png)
 
 Login for E-sports APP:
 ![App Screenshot](./capture/LOGIN.png)
+User Dashboard:
+![App Screenshot](./capture/userdach2.png)
 
-About E-sports APP:
-![App Screenshot](./capture/about.png)
+![App Screenshot](./capture/userdach3.png)
+
+![App Screenshot](./capture/userdach4.png)
+
+
