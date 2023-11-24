@@ -25,5 +25,11 @@ User Dashboard:
 ![App Screenshot](./capture/userdach3.png)
 
 ![App Screenshot](./capture/userdach4.png)
+Admin Dashboard:
+
+![App Screenshot](./capture/admindach.png)
+
+![App Screenshot](./capture/userdach2.png)
+
 
 
