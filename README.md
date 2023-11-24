@@ -35,7 +35,6 @@ A robust set of admin features that serves as a centralized hub for overseeing v
 
 ### Admin Dashboard:
 ![App Screenshot](./capture/admindach.png)
-![App Screenshot](./capture/admindach3.png)
 ![App Screenshot](./capture/admindach4.png)
 ### Users Administration:
 ![App Screenshot](./capture/admindach2.png)
