@@ -20,8 +20,6 @@ MY main objective was to design a web application dedicated to esports that not 
 ![App Screenshot](./capture/LOGIN.png)
 **User Dashboard:**
 ![App Screenshot](./capture/userdach.png)
-![App Screenshot](./capture/userdach2.png)
-
 ![App Screenshot](./capture/userdach3.png)
 
 ![App Screenshot](./capture/userdach4.png)
