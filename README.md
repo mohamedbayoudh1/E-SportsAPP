@@ -25,9 +25,9 @@ User Dashboard:
 ![App Screenshot](./capture/userdach3.png)
 
 ![App Screenshot](./capture/userdach4.png)
+
 Tournoi:
 ![App Screenshot](./capture/tournoi.png)
-
 ![App Screenshot](./capture/maketournoi.png)
 
 Admin Dashboard:
