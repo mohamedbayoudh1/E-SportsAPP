@@ -37,12 +37,15 @@ A robust set of admin features that serves as a centralized hub for overseeing v
 
 ### Admin Dashboard:
 ![App Screenshot](./capture/admindach.png)
-
+![App Screenshot](./capture/admindach3.png)
+![App Screenshot](./capture/admindach4.png)
+### Users Administration:
 ![App Screenshot](./capture/admindach2.png)
 #### Team Management:
 ![App Screenshot](./capture/adminteams.png)
 ![App Screenshot](./capture/adminteamlist.png)
-
+#### Game Administration:
+![App Screenshot](./capture/admingames.png)
 
 #### Product Administration:
 Efficiently handle a range of products, including exclusive merchandise like shirts. Showcase, update, and manage your inventory effortlessly.
