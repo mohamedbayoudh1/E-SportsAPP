@@ -1,5 +1,5 @@
 #E-SportsAPP "Some Highlights of the Project"
- E-sports WEB APP ''Symfony5'' 
+ E-sports WEB APP ''Symfony5'' While this README provides a glimpse into the app's capabilities, it's important to note that there is much more under the hood. The codebase includes additional features and functionalities that may not be covered here. Feel free to dive into the source code to uncover the full potential of this E-Sports WEB APP.
  
 The E-sports Platform By Mohamed bayoudh !
 Game globally with Mohamed Bayoudh's ESports platform – your ultimate online arena for competitive gaming and worldwide tournaments. Immerse yourself in thrilling matches while seizing the opportunity to earn real money through seamless streaming. Additionally, leverage our platform to showcase and sell your exclusive products, including stylish merchandise like shirts. Join us in revolutionizing gaming, where passion meets profit, and excellence is not only recognized but rewarded. Elevate your gaming experience, amplify your brand, and turn your skills into success!
