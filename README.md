@@ -1,4 +1,4 @@
-#E-SportsAPP
+#E-SportsAPP "Some Highlights of the Project"
  E-sports WEB APP ''Symfony5'' 
  
 The E-sports Platform By Mohamed bayoudh !
@@ -25,7 +25,9 @@ User Dashboard:
 ![App Screenshot](./capture/userdach3.png)
 
 ![App Screenshot](./capture/userdach4.png)
-
+Teams:"You must havea Team to make or rejoindre a Tournoi"
+![App Screenshot](./capture/teams.png)
+![App Screenshot](./capture/maketeam.png)
 Tournoi:
 ![App Screenshot](./capture/tournoi.png)
 ![App Screenshot](./capture/maketournoi.png)
