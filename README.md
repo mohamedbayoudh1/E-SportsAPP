@@ -25,7 +25,9 @@ User Dashboard:
 ![App Screenshot](./capture/userdach3.png)
 
 ![App Screenshot](./capture/userdach4.png)
-
+Teams:"You must have Teams to make or rejoindre Tournoi"
+![App Screenshot](./capture/team.png)
+![App Screenshot](./capture/maketeam.png)
 Tournoi:
 ![App Screenshot](./capture/tournoi.png)
 ![App Screenshot](./capture/maketournoi.png)
