@@ -50,5 +50,5 @@ Efficiently manage a diverse range of products, spanning various categories incl
 ![App Screenshot](./capture/produit.png)
 ![App Screenshot](./capture/produitadmin.png)
 
-
+**"Note: The features mentioned above provide just a glimpse into the capabilities of this application. There are numerous additional features and functionalities implemented in the codebase that are not covered in this overview. Feel free to explore the source code to discover the full extent of the application's capabilities."**
 
