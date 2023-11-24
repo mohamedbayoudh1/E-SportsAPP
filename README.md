@@ -1,5 +1,5 @@
 #E-SportsAPP
- E-sports WEB APP ''Symfony5''
+ E-sports WEB APP ''Symfony5'' 
  
 The E-sports Platform By Mohamed bayoudh !
 Game globally with Mohamed Bayoudh's ESports platform – your ultimate online arena for competitive gaming and worldwide tournaments. Immerse yourself in thrilling matches while seizing the opportunity to earn real money through seamless streaming. Additionally, leverage our platform to showcase and sell your exclusive products, including stylish merchandise like shirts. Join us in revolutionizing gaming, where passion meets profit, and excellence is not only recognized but rewarded. Elevate your gaming experience, amplify your brand, and turn your skills into success!
@@ -11,12 +11,30 @@ MY main objective was to design a web application dedicated to esports that not 
 
 Home of E-sports APP:
 ![App Screenshot](./capture/ACCUEIL.png)
+![App Screenshot](./capture/about.png)
 
 Registration for E-sports APP:
 ![App Screenshot](./capture/INSCRIPTION.png)
 
 Login for E-sports APP:
 ![App Screenshot](./capture/LOGIN.png)
+User Dashboard:
+![App Screenshot](./capture/userdach.png)
+![App Screenshot](./capture/userdach2.png)
 
-About E-sports APP:
-![App Screenshot](./capture/about.png)
+![App Screenshot](./capture/userdach3.png)
+
+![App Screenshot](./capture/userdach4.png)
+
+Tournoi:
+![App Screenshot](./capture/tournoi.png)
+![App Screenshot](./capture/maketournoi.png)
+
+Admin Dashboard:
+
+![App Screenshot](./capture/admindach.png)
+
+![App Screenshot](./capture/admindach2.png)
+
+
+
