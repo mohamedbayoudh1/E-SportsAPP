@@ -43,8 +43,8 @@ A robust set of admin features that serves as a centralized hub for overseeing v
 #### Game Administration:
 ![App Screenshot](./capture/admingames.png)
 
-#### Product Administration:
-Efficiently handle a range of products, including exclusive merchandise like shirts. Showcase, update, and manage your inventory effortlessly.
+#### Product Management:
+Efficiently manage a diverse range of products, spanning various categories including shirts and more. Effortlessly showcase, update, and oversee products available for sale with seamless efficiency.
 ![App Screenshot](./capture/adminproduit.png)
 ![App Screenshot](./capture/adminproduit1.png)
 ![App Screenshot](./capture/produit.png)
