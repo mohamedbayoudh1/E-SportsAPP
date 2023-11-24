@@ -9,16 +9,16 @@ MY main objective was to design a web application dedicated to esports that not 
 
 " I chose Symfony for the development of MY esports application to realize MY ambition of designing a sophisticated and attractive solution. This aims to provide a top-notch user experience while leveraging the well-established advantages of this framework, which enjoys significant recognition in the industry for its efficiency in creating high-performing products."
 
-Home of E-sports APP:
+**Home of E-sports APP:**
 ![App Screenshot](./capture/ACCUEIL.png)
 ![App Screenshot](./capture/about.png)
 
-Registration for E-sports APP:
+**Registration for E-sports APP:**
 ![App Screenshot](./capture/INSCRIPTION.png)
 
-Login for E-sports APP:
+**Login for E-sports APP:**
 ![App Screenshot](./capture/LOGIN.png)
-User Dashboard:
+**User Dashboard:**
 ![App Screenshot](./capture/userdach.png)
 ![App Screenshot](./capture/userdach2.png)
 
@@ -26,16 +26,14 @@ User Dashboard:
 
 ![App Screenshot](./capture/userdach4.png)
 ![App Screenshot](./capture/wallet.png)
-Teams:"You must havea Team to make or rejoindre a Tournoi"
+**Teams:"You must havea Team to make or rejoindre a Tournoi"**
 ![App Screenshot](./capture/teams.png)
 ![App Screenshot](./capture/maketeam.png)
-Tournoi:
+**Tournoi:**
 ![App Screenshot](./capture/tournoi.png)
 ![App Screenshot](./capture/maketournoi.png)
 **Admin Control Center**
-Discover the robust admin features that empower you to manage tournaments, products, and teams seamlessly on the E-sports WEB APP
-
-Admin Dashboard:
+A robust set of admin features that serves as a centralized hub for overseeing various aspects, including tournaments, products, teams, coaching, security, users, and games.
 
 ### Admin Dashboard:
 ![App Screenshot](./capture/admindach.png)
@@ -43,6 +41,7 @@ Admin Dashboard:
 ![App Screenshot](./capture/admindach2.png)
 #### Team Management:
 ![App Screenshot](./capture/adminteams.png)
+![App Screenshot](./capture/adminteamlist.png)
 
 #### Tournament Management:
 Effortlessly oversee and organize tournaments with advanced functionalities. Select winners, manage scores, and ensure a smooth gaming experience.
