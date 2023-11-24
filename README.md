@@ -29,7 +29,7 @@ Admin Dashboard:
 
 ![App Screenshot](./capture/admindach.png)
 
-![App Screenshot](./capture/userdach2.png)
+![App Screenshot](./capture/admindach2.png)
 
 
 
