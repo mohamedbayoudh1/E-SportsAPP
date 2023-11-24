@@ -25,18 +25,35 @@ User Dashboard:
 ![App Screenshot](./capture/userdach3.png)
 
 ![App Screenshot](./capture/userdach4.png)
+![App Screenshot](./capture/wallet.png)
 Teams:"You must havea Team to make or rejoindre a Tournoi"
 ![App Screenshot](./capture/teams.png)
 ![App Screenshot](./capture/maketeam.png)
 Tournoi:
 ![App Screenshot](./capture/tournoi.png)
 ![App Screenshot](./capture/maketournoi.png)
+**Admin Control Center**
+Discover the robust admin features that empower you to manage tournaments, products, and teams seamlessly on the E-sports WEB APP
 
 Admin Dashboard:
 
+### Admin Dashboard:
 ![App Screenshot](./capture/admindach.png)
 
 ![App Screenshot](./capture/admindach2.png)
+#### Team Management:
+![App Screenshot](./capture/adminteams.png)
+
+#### Tournament Management:
+Effortlessly oversee and organize tournaments with advanced functionalities. Select winners, manage scores, and ensure a smooth gaming experience.
+![App Screenshot](./capture/admindach2.png)
+
+#### Product Administration:
+Efficiently handle a range of products, including exclusive merchandise like shirts. Showcase, update, and manage your inventory effortlessly.
+![App Screenshot](./capture/adminproduit.png)
+![App Screenshot](./capture/adminproduit1.png)
+![App Screenshot](./capture/produit.png)
+![App Screenshot](./capture/produitadmin.png)
 
 
 
