@@ -1,4 +1,4 @@
-#E-SportsAPP
+#E-SportsAPP "Some Highlights of the Project"
  E-sports WEB APP ''Symfony5'' 
  
 The E-sports Platform By Mohamed bayoudh !
