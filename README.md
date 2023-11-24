@@ -1,4 +1,4 @@
-#E-SportsAPP "Some Highlights of the Project"
+#E-SportsAPP **"Some Highlights of the Project"**
 
 **This repository hosts the source code for an advanced esports platform developed by  Mohamed bayoudh. My primary goal was to design a web application dedicated to esports that not only meets the advanced requirements of the industry but is also attractive, user-friendly, and equipped with a comprehensive range of tools and features to satisfy both administrators and end users, including visitors exploring the platform.**
 
