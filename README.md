@@ -1,4 +1,4 @@
-# E-Sports WEB APP Welcome to the E-Sports WEB APP powered by Symfony!
+# E-Sports WEB APP
 ## Overview
 This repository hosts the source code for an advanced esports platform developed by Mohamed Bayoudh. The platform is designed to offer a comprehensive gaming experience, integrating innovative features for tournaments, products, teams, coaching, security, users, games, and more. It is attractive, user-friendly, and equipped with a comprehensive range of tools and features to satisfy both administrators and end-users, including visitors exploring the platform.
 
