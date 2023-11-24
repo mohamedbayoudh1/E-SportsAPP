@@ -11,7 +11,7 @@ MY main objective was to design a web application dedicated to esports that not 
 
 Home of E-sports APP:
 ![App Screenshot](./capture/ACCUEIL.png)
-![App Screenshot](./capture/userdach.png)
+![App Screenshot](./capture/about.png)
 
 Registration for E-sports APP:
 ![App Screenshot](./capture/INSCRIPTION.png)
