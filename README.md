@@ -40,7 +40,6 @@ A robust set of admin features that serves as a centralized hub for overseeing v
 ![App Screenshot](./capture/admindach2.png)
 #### Team Management:
 ![App Screenshot](./capture/adminteams.png)
-![App Screenshot](./capture/adminteamlist.png)
 #### Game Administration:
 ![App Screenshot](./capture/admingames.png)
 
